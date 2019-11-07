@@ -1,0 +1,54 @@
+{
+  "name": "last-period-tools",
+  "version": "0.1.0",
+  "license": "MIT",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "scripts": {
+    "clean": "rimraf build",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "lint": "tslint src/*.ts src/*.tsx src/**/*.ts src/**/*.tsx",
+    "start": "react-scripts start",
+    "test": "react-scripts test"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.2.0",
+    "@material-ui/icons": "^4.2.1",
+    "@types/js-yaml": "^3.12.1",
+    "@types/node": "^12.12.6",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.4",
+    "@types/react-redux": "^7.1.1",
+    "@types/react-router-dom": "^5.1.0",
+    "@types/shortid": "^0.0.29",
+    "bignumber.js": "^9.0.0",
+    "js-yaml": "^3.13.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.2.0",
+    "redux": "^4.0.2",
+    "redux-logger": "^3.0.6",
+    "rimraf": "^3.0.0",
+    "shortid": "^2.2.15",
+    "ts-node": "^8.4.1",
+    "tslint": "^5.18.0",
+    "typescript": "^3.7.2",
+    "xlsx": "^0.15.1"
+  }
+}

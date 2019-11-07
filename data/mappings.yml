@@ -1,0 +1,159 @@
+アタック:
+- sheet: アタック
+  ability: 攻撃力
+  type: value
+ライフ:
+- sheet: ライフ
+  ability: HP
+  type: value
+クイック:
+- sheet: クイック
+  ability: スピード
+  type: value
+クリティカルレート:
+- sheet: クリレ
+  ability: CRT率
+  type: percentage
+クリティカルダメージ:
+- sheet: クリダメ
+  ability: CRT攻撃力
+  type: percentage
+スキルチャージ:
+- sheet: スキチャ
+  ability: SP上昇量
+  type: percentage
+ヒール:
+- sheet: ヒール
+  ability: 回復上昇量
+  type: percentage
+スレイヤー:
+- sheet: スレイヤー
+  ability: 属性攻撃力
+  type: percentage
+ガード:
+- sheet: ガード
+  ability: 耐性
+  type: percentage
+スレイヤーA:
+- sheet: スレイヤーA1
+  ability: 属性攻撃力
+  type: percentage
+- sheet: スレイヤーA2
+  ability: 攻撃力
+  type: value
+フォース:
+- sheet: フォース
+  ability: 攻撃力
+  type: value
+- sheet: フォース
+  ability: HP
+  type: value
+マナ:
+- sheet: マナ1
+  ability: HP
+  type: value
+- sheet: マナ2
+  ability: スピード
+  type: value
+ソウル:
+- sheet: ソウル1
+  ability: スピード
+  type: value
+- sheet: ソウル2
+  ability: 攻撃力
+  type: value
+オーラ:
+- sheet: オーラ1
+  ability: HP
+  type: value
+- sheet: オーラ2
+  ability: SP上昇量
+  type: percentage
+アニマ:
+- sheet: アニマ1
+  ability: 攻撃力
+  type: value
+- sheet: アニマ2
+  ability: CRT率
+  type: percentage
+スピリット:
+- sheet: スピリット1
+  ability: スピード
+  type: value
+- sheet: スピリット2
+  ability: CRT率
+  type: percentage
+ゼーレ:
+- sheet: ゼーレ1
+  ability: スピード
+  type: value
+- sheet: ゼーレ2
+  ability: CRT攻撃力
+  type: percentage
+フランメラン:
+- sheet: フランメラン
+  ability: 攻撃力
+  type: value
+グラーフゾルク:
+- sheet: グラーフゾルク1
+  ability: スピード
+  type: value
+- sheet: グラーフゾルク2
+  ability: SP上昇量
+  type: percentage
+セルウィトル:
+- sheet: セルウィトル1
+  ability: スピード
+  type: value
+- sheet: セルウィトル2
+  ability: SP上昇量
+  type: percentage
+アービトレイター:
+- sheet: アービトレイター1
+  ability: 攻撃力
+  type: value
+- sheet: アービトレイター2
+  ability: CRT率
+  type: percentage
+アヌビスラート:
+- sheet: アヌビスラート1
+  ability: 攻撃力
+  type: value
+- sheet: アヌビスラート2
+  ability: CRT率
+  type: percentage
+アポストルス:
+- sheet: アポストルス1
+  ability: スピード
+  type: value
+- sheet: アポストルス2
+  ability: 攻撃力 (ラピッドパワー)
+  type: percentage
+ゲオルギオス:
+- sheet: ゲオルギオス1
+  ability: HP
+  type: value
+- sheet: ゲオルギオス2
+  ability: 攻撃力 (セーフティパワー)
+  type: percentage
+実験体61號:
+- sheet: 実験体61號1
+  ability: 攻撃力
+  type: value
+- sheet: 実験体61號2
+  ability: 攻撃力 (ピンチパワー)
+  type: percentage
+ヤマガミ:
+- sheet: ヤマガミ1
+  ability: スピード
+  type: value
+- sheet: ヤマガミ2
+  ability: 攻撃力 (ピンチパワー)
+  type: percentage
+リリスアリス:
+- sheet: リリスアリス1
+  ability: CRT率
+  type: percentage
+- sheet: リリスアリス2
+  ability: 攻撃力 (ラピッドパワー)
+  type: percentage
