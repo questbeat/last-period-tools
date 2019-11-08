@@ -10,6 +10,9 @@ const theme = createMuiTheme({
   palette: {
     primary: indigo,
   },
+  typography: {
+    fontSize: 13,
+  },
 })
 
 const useStyles = makeStyles((theme: Theme) =>

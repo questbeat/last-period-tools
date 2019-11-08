@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     main: {
       flexGrow: 1,
+      maxWidth: '100vw',
       paddingTop: theme.spacing(2),
       paddingBottom: theme.spacing(4),
     },
