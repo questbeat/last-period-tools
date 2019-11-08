@@ -30,7 +30,7 @@ const Footer = () => {
           下記はサイト独自の内容に関する著作権を示すものです。
         </Box>
         <Box color='text.secondary' fontSize='0.75rem'>
-          &copy; questbeat
+          &copy; ko9ab
         </Box>
       </Container>
     </footer>
