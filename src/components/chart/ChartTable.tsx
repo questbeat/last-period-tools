@@ -14,12 +14,12 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-type Props = {
+type ChartTableProps = {
   ability: Regalia.Ability
   rank: Regalia.Rank
 }
 
-const ChartTable = (props: Props) => {
+const ChartTable: React.FC<ChartTableProps> = props => {
   const classes = useStyles()
 
   let rows: React.ReactElement[] = []

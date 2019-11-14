@@ -15,11 +15,11 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-type Props = {
+type CalculatorProps = {
   regalias: Regalia.Regalia[]
 }
 
-const Calculator = (props: Props) => {
+const Calculator: React.FC<CalculatorProps> = props => {
   const classes = useStyles()
 
   const tableHead = useMemo(

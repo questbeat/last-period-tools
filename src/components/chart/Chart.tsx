@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const Chart = () => {
+const Chart: React.FC = () => {
   const classes = useStyles()
   const { dispatch, state } = useContext(ChartContext)
   const { definition, rank } = state

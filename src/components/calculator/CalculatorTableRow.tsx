@@ -48,11 +48,11 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-type Props = {
+type CalculatorTableRowProps = {
   regalia: Regalia.Regalia
 }
 
-const CalculatorTableRow: React.FC<Props> = props => {
+const CalculatorTableRow: React.FC<CalculatorTableRowProps> = props => {
   const classes = useStyles()
   const { dispatch } = useContext(CalculatorContext)
 

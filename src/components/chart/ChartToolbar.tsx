@@ -25,14 +25,14 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-type Props = {
+type ChartToolbarProps = {
   definition: Regalia.Definition
   rank: Regalia.Rank
   onDefinitionChange: (definition: Regalia.Definition) => void
   onRankChange: (rank: Regalia.Rank) => void
 }
 
-const ChartToolbar = (props: Props) => {
+const ChartToolbar: React.FC<ChartToolbarProps> = props => {
   const classes = useStyles()
   const { onDefinitionChange, onRankChange } = props
 

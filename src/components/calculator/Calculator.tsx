@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const Calculator = () => {
+const Calculator: React.FC = () => {
   const classes = useStyles()
   const { dispatch, state } = React.useContext(CalculatorContext)
   const regalias = state.regalias

@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const Footer = () => {
+const Footer: React.FC = () => {
   const classes = useStyles()
 
   return (

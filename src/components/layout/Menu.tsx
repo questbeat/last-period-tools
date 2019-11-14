@@ -11,12 +11,12 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-type Props = {
+type MenuProps = {
   onClick: () => void
   onKeyDown: () => void
 }
 
-const Menu = (props: Props) => {
+const Menu: React.FC<MenuProps> = props => {
   const classes = useStyles()
   const { onClick, onKeyDown } = props
 

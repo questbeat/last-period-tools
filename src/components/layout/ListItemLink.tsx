@@ -5,18 +5,18 @@ import { Omit } from '@material-ui/types'
 import React from 'react'
 import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-dom'
 
-type Props = {
-  external: boolean
+type ListItemLinkProps = {
+  external?: boolean
   primary: string
   to: string
 }
 
-const ListItemLink = (props: Props) => {
+const ListItemLink: React.FC<ListItemLinkProps> = props => {
   const { external, primary, to } = props
 
   const renderLink = React.useMemo(
     () => {
-      if (external) {
+      if (external === true) {
         return React.forwardRef<HTMLAnchorElement, Omit<LinkProps, 'innerRef' | 'to'>>((linkProps, ref) => (
           <Link href={to} target='_blank' rel='noopener' color='inherit' innerRef={ref} {...linkProps} />
         ))
@@ -37,10 +37,6 @@ const ListItemLink = (props: Props) => {
       </ListItem>
     </li>
   )
-}
-
-ListItemLink.defaultProps = {
-  external: false,
 }
 
 export default ListItemLink

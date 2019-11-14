@@ -26,13 +26,13 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-type Props = {
+type CalculatorToolbarProps = {
   regalias: Regalia.Regalia[]
   onAdd: () => void
   onImport: (regalias: Regalia.Regalia[]) => void
 }
 
-const CalculatorToolbar = (props: Props) => {
+const CalculatorToolbar: React.FC<CalculatorToolbarProps> = props => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const classes = useStyles()
   const inputEl = useRef<HTMLInputElement>(null)
