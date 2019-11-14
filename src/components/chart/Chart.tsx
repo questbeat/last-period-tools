@@ -1,8 +1,7 @@
 import { Box, Paper, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import React, { useCallback } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { State } from '../../modules'
+import React, { useCallback, useContext } from 'react'
+import { ChartContext, ChartContextProvider } from '../../contexts/chart'
 import { setDefinition, setRank } from '../../modules/chart'
 import * as Regalia from '../../regalia'
 import ChartTable from './ChartTable'
@@ -24,18 +23,16 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Chart = () => {
   const classes = useStyles()
-  const dispatch = useDispatch()
-
-  const definition = useSelector((state: State) => state.chart.definition)
-  const rank = useSelector((state: State) => state.chart.rank)
+  const { dispatch, state } = useContext(ChartContext)
+  const { definition, rank } = state
 
   const handleDefinitionChange = useCallback(
-    (definition: Regalia.Definition) => dispatch(setDefinition(definition)),
+    (definition: Regalia.Definition) => dispatch && dispatch(setDefinition(definition)),
     [dispatch]
   )
 
   const handleRankChange = useCallback(
-    (rank: Regalia.Rank) => dispatch(setRank(rank)),
+    (rank: Regalia.Rank) => dispatch && dispatch(setRank(rank)),
     [dispatch]
   )
 
@@ -61,4 +58,12 @@ const Chart = () => {
   )
 }
 
-export default Chart
+const ChartWithContext: React.FC = () => {
+  return (
+    <ChartContextProvider>
+      <Chart />
+    </ChartContextProvider>
+  )
+}
+
+export default ChartWithContext

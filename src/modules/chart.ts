@@ -19,7 +19,7 @@ export function setRank(rank: Regalia.Rank) {
   }
 }
 
-export type Action = (
+export type ChartAction = (
   | ReturnType<typeof setDefinition>
   | ReturnType<typeof setRank>
 )
@@ -36,7 +36,7 @@ export const chartInitialState: ChartState = {
 
 export function chartReducer(
   state = chartInitialState,
-  action: Action
+  action: ChartAction
 ): ChartState {
   switch (action.type) {
     case ActionType.SetDefinition:
