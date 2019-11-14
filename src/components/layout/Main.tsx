@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingTop: theme.spacing(2),
       paddingBottom: theme.spacing(4),
     },
-  }),
+  })
 )
 
 const Main: React.FC = () => {
@@ -22,12 +22,12 @@ const Main: React.FC = () => {
 
   return (
     <main className={classes.main}>
-      <Container maxWidth='md'>
+      <Container maxWidth="md">
         <Switch>
-          <Route exact path='/' component={Calculator} />
-          <Route exact path='/about' component={About} />
-          <Route exact path='/calc' component={Calculator} />
-          <Route exact path='/chart' component={Chart} />
+          <Route exact path="/" component={Calculator} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/calc" component={Calculator} />
+          <Route exact path="/chart" component={Chart} />
         </Switch>
       </Container>
     </main>

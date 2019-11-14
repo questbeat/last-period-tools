@@ -2,7 +2,11 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Redux from 'redux'
 import { State } from '../modules'
-import { CalculatorAction, calculatorInitialState, CalculatorState } from '../modules/calculator'
+import {
+  CalculatorAction,
+  calculatorInitialState,
+  CalculatorState,
+} from '../modules/calculator'
 
 interface CalculatorContextProps {
   dispatch?: Redux.Dispatch<CalculatorAction>

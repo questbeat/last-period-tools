@@ -1,4 +1,10 @@
-import { FormControl, MenuItem, Select, Toolbar, Typography } from '@material-ui/core'
+import {
+  FormControl,
+  MenuItem,
+  Select,
+  Toolbar,
+  Typography,
+} from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import React, { useCallback } from 'react'
 import * as Regalia from '../../regalia'
@@ -22,7 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),
     },
-  }),
+  })
 )
 
 type ChartToolbarProps = {
@@ -37,7 +43,7 @@ const ChartToolbar: React.FC<ChartToolbarProps> = props => {
   const { onDefinitionChange, onRankChange } = props
 
   const handleDefinitionChange = useCallback(
-    (event: React.ChangeEvent<{ name?: string, value: unknown }>) => {
+    (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
       const name = event.target.value as string
       const definition = Regalia.definitions.find(d => d.name === name)
       if (definition) onDefinitionChange(definition)
@@ -46,7 +52,7 @@ const ChartToolbar: React.FC<ChartToolbarProps> = props => {
   )
 
   const handleRankChange = useCallback(
-    (event: React.ChangeEvent<{ name?: string, value: unknown }>) => {
+    (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
       onRankChange(event.target.value as Regalia.Rank)
     },
     [onRankChange]
@@ -55,9 +61,7 @@ const ChartToolbar: React.FC<ChartToolbarProps> = props => {
   return (
     <Toolbar className={classes.toolbar}>
       <div className={classes.title}>
-        <Typography variant='h6'>
-          レガリア能力値早見表
-        </Typography>
+        <Typography variant="h6">レガリア能力値早見表</Typography>
       </div>
       <div className={classes.spacer}></div>
       <div className={classes.forms}>

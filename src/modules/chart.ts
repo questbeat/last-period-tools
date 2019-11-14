@@ -2,7 +2,7 @@ import * as Regalia from '../regalia'
 
 enum ActionType {
   SetDefinition = 'CHART_SET_DEFINITION',
-  SetRank       = 'CHART_SET_RANK',
+  SetRank = 'CHART_SET_RANK',
 }
 
 export function setDefinition(definition: Regalia.Definition) {
@@ -19,10 +19,9 @@ export function setRank(rank: Regalia.Rank) {
   }
 }
 
-export type ChartAction = (
+export type ChartAction =
   | ReturnType<typeof setDefinition>
   | ReturnType<typeof setRank>
-)
 
 export interface ChartState {
   definition: Regalia.Definition

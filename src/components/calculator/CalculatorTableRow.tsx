@@ -1,9 +1,24 @@
-import { Box, FormControl, IconButton, MenuItem, Select, TableCell, TableRow } from '@material-ui/core'
+import {
+  Box,
+  FormControl,
+  IconButton,
+  MenuItem,
+  Select,
+  TableCell,
+  TableRow,
+} from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import DeleteIcon from '@material-ui/icons/Delete'
 import React, { useCallback, useContext, useMemo } from 'react'
 import { CalculatorContext } from '../../contexts/calculator'
-import { removeRegalia, setRegaliaDefinition, setRegaliaLevel, setRegaliaRank, setRegaliaRarity, setRegaliaUpgrade } from '../../modules/calculator'
+import {
+  removeRegalia,
+  setRegaliaDefinition,
+  setRegaliaLevel,
+  setRegaliaRank,
+  setRegaliaRarity,
+  setRegaliaUpgrade,
+} from '../../modules/calculator'
 import * as Regalia from '../../regalia'
 
 const regaliaLevelLabels: { [key in Regalia.Level]: string } = {
@@ -45,7 +60,7 @@ const useStyles = makeStyles((theme: Theme) =>
     cell: {
       padding: '6px 16px 6px 16px',
     },
-  }),
+  })
 )
 
 type CalculatorTableRowProps = {
@@ -57,7 +72,7 @@ const CalculatorTableRow: React.FC<CalculatorTableRowProps> = props => {
   const { dispatch } = useContext(CalculatorContext)
 
   const handleTypeChange = useCallback(
-    (event: React.ChangeEvent<{ name?: string, value: unknown }>) => {
+    (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
       const name = event.target.value as string
       const definition = Regalia.definitions.find(d => d.name === name)
       if (dispatch && definition) {
@@ -68,36 +83,50 @@ const CalculatorTableRow: React.FC<CalculatorTableRowProps> = props => {
   )
 
   const handleRankChange = useCallback(
-    (event: React.ChangeEvent<{ name?: string, value: unknown }>) => {
+    (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
       if (dispatch) {
-        dispatch(setRegaliaRank(props.regalia.id, event.target.value as Regalia.Rank))
+        dispatch(
+          setRegaliaRank(props.regalia.id, event.target.value as Regalia.Rank)
+        )
       }
     },
     [dispatch, props.regalia.id]
   )
 
   const handleRarityChange = useCallback(
-    (event: React.ChangeEvent<{ name?: string, value: unknown }>) => {
+    (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
       if (dispatch) {
-        dispatch(setRegaliaRarity(props.regalia.id, event.target.value as Regalia.Rarity))
+        dispatch(
+          setRegaliaRarity(
+            props.regalia.id,
+            event.target.value as Regalia.Rarity
+          )
+        )
       }
     },
     [dispatch, props.regalia.id]
   )
 
   const handleUpgradeChange = useCallback(
-    (event: React.ChangeEvent<{ name?: string, value: unknown }>) => {
+    (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
       if (dispatch) {
-        dispatch(setRegaliaUpgrade(props.regalia.id, event.target.value as Regalia.Upgrade))
+        dispatch(
+          setRegaliaUpgrade(
+            props.regalia.id,
+            event.target.value as Regalia.Upgrade
+          )
+        )
       }
     },
     [dispatch, props.regalia.id]
   )
 
   const handleLevelChange = useCallback(
-    (event: React.ChangeEvent<{ name?: string, value: unknown }>) => {
+    (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
       if (dispatch) {
-        dispatch(setRegaliaLevel(props.regalia.id, event.target.value as Regalia.Level))
+        dispatch(
+          setRegaliaLevel(props.regalia.id, event.target.value as Regalia.Level)
+        )
       }
     },
     [dispatch, props.regalia.id]
@@ -228,27 +257,24 @@ const CalculatorTableRow: React.FC<CalculatorTableRowProps> = props => {
     [classes.cell, handleLevelChange, props.regalia.level]
   )
 
-  const displayValueCell = useMemo(
-    () => {
-      const values = Regalia.computeValues(props.regalia)
-      const displayValues = values.map(value => Regalia.getDisplayValue(value))
+  const displayValueCell = useMemo(() => {
+    const values = Regalia.computeValues(props.regalia)
+    const displayValues = values.map(value => Regalia.getDisplayValue(value))
 
-      return (
-        <TableCell className={classes.cell}>
-          <Box display='flex' flexDirection='column'>
-            {displayValues.map((displayValue, index) => (
-              <Box key={index}>{displayValue}</Box>
-            ))}
-          </Box>
-        </TableCell>
-      )
-    },
-    [classes.cell, props.regalia]
-  )
+    return (
+      <TableCell className={classes.cell}>
+        <Box display="flex" flexDirection="column">
+          {displayValues.map((displayValue, index) => (
+            <Box key={index}>{displayValue}</Box>
+          ))}
+        </Box>
+      </TableCell>
+    )
+  }, [classes.cell, props.regalia])
 
   const actionCell = useMemo(
     () => (
-      <TableCell className={classes.cell} align='right'>
+      <TableCell className={classes.cell} align="right">
         <IconButton onClick={handleDelete}>
           <DeleteIcon />
         </IconButton>

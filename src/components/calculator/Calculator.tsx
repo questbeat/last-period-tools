@@ -1,7 +1,10 @@
 import { Paper } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import React, { useCallback, useMemo } from 'react'
-import { CalculatorContext, CalculatorContextProvider } from '../../contexts/calculator'
+import {
+  CalculatorContext,
+  CalculatorContextProvider,
+} from '../../contexts/calculator'
 import { addRegalia, setRegalias } from '../../modules/calculator'
 import * as Regalia from '../../regalia'
 import CalculatorTable from './CalculatorTable'
@@ -20,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
     table: {
       minWidth: 650,
     },
-  }),
+  })
 )
 
 const Calculator: React.FC = () => {
@@ -33,13 +36,13 @@ const Calculator: React.FC = () => {
     [regalias]
   )
 
-  const handleAdd = useCallback(
-    () => dispatch && dispatch(addRegalia()),
-    [dispatch]
-  )
+  const handleAdd = useCallback(() => dispatch && dispatch(addRegalia()), [
+    dispatch,
+  ])
 
   const handleImport = useCallback(
-    (regalias: Regalia.Regalia[]) => dispatch && dispatch(setRegalias(regalias)),
+    (regalias: Regalia.Regalia[]) =>
+      dispatch && dispatch(setRegalias(regalias)),
     [dispatch]
   )
 

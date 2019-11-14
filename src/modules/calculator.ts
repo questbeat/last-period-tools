@@ -1,14 +1,14 @@
 import * as Regalia from '../regalia'
 
 enum ActionType {
-  AddRegalia           = 'CALC_ADD_REGALIA',
-  RemoveRegalia        = 'CALC_REMOVE_REGALIA',
+  AddRegalia = 'CALC_ADD_REGALIA',
+  RemoveRegalia = 'CALC_REMOVE_REGALIA',
   SetRegaliaDefinition = 'CALC_SET_REGALIA_DEFINITION',
-  SetRegaliaLevel      = 'CALC_SET_REGALIA_LEVEL',
-  SetRegaliaRank       = 'CALC_SET_REGALIA_RANK',
-  SetRegaliaRarity     = 'CALC_SET_REGALIA_RARITY',
-  SetRegaliaUpgrade    = 'CALC_SET_REGALIA_UPGRADE',
-  SetRegalias          = 'CALC_SET_REGALIAS',
+  SetRegaliaLevel = 'CALC_SET_REGALIA_LEVEL',
+  SetRegaliaRank = 'CALC_SET_REGALIA_RANK',
+  SetRegaliaRarity = 'CALC_SET_REGALIA_RARITY',
+  SetRegaliaUpgrade = 'CALC_SET_REGALIA_UPGRADE',
+  SetRegalias = 'CALC_SET_REGALIAS',
 }
 
 export function addRegalia() {
@@ -24,7 +24,10 @@ export function removeRegalia(id: string) {
   }
 }
 
-export function setRegaliaDefinition(id: string, definition: Regalia.Definition) {
+export function setRegaliaDefinition(
+  id: string,
+  definition: Regalia.Definition
+) {
   return {
     type: ActionType.SetRegaliaDefinition as const,
     payload: { id, definition },
@@ -66,7 +69,7 @@ export function setRegalias(regalias: Regalia.Regalia[]) {
   }
 }
 
-export type CalculatorAction = (
+export type CalculatorAction =
   | ReturnType<typeof addRegalia>
   | ReturnType<typeof removeRegalia>
   | ReturnType<typeof setRegaliaDefinition>
@@ -75,7 +78,6 @@ export type CalculatorAction = (
   | ReturnType<typeof setRegaliaRarity>
   | ReturnType<typeof setRegaliaUpgrade>
   | ReturnType<typeof setRegalias>
-)
 
 export interface CalculatorState {
   regalias: {
@@ -116,7 +118,9 @@ export function calculatorReducer(
 
     case ActionType.RemoveRegalia:
       const { [action.payload.id]: value, ...byIds } = state.regalias.byId
-      const allIds = state.regalias.allIds.filter(id => id !== action.payload.id)
+      const allIds = state.regalias.allIds.filter(
+        id => id !== action.payload.id
+      )
 
       return {
         ...state,

@@ -1,9 +1,9 @@
 import BigNumber from 'bignumber.js'
 import shortid from 'shortid'
 
-export type Level   = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
-export type Rank    = 'A' | 'B' | 'C' | 'S'
-export type Rarity  = 1 | 2 | 3 | 4
+export type Level = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
+export type Rank = 'A' | 'B' | 'C' | 'S'
+export type Rarity = 1 | 2 | 3 | 4
 export type Upgrade = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
 
 export interface BaseValue {
@@ -53,8 +53,12 @@ export const rankValues: { [key in Rank]: number } = {
 
 const definitions: Definition[] = require('./definitions.json')
 definitions.sort((a, b) => {
-  if (a.name < b.name) { return -1 }
-  if (a.name > b.name) { return 1 }
+  if (a.name < b.name) {
+    return -1
+  }
+  if (a.name > b.name) {
+    return 1
+  }
   return 0
 })
 export { definitions }
@@ -66,10 +70,10 @@ export function floor(num: number, digits: number): number {
 
 export function computeValue(props: {
   ability: Ability
-  level: Level,
-  rank: Rank,
-  rarity: Rarity,
-  upgrade: Upgrade,
+  level: Level
+  rank: Rank
+  rarity: Rarity
+  upgrade: Upgrade
 }): Value {
   const base = props.ability.baseValues[props.rarity - 1]
 
@@ -91,7 +95,12 @@ export function computeValue(props: {
   const level = new BigNumber(props.level)
 
   const value = min // 基礎能力値
-    .plus(max.minus(min).times(level.minus(one)).dividedBy(nine)) // レベル補正値
+    .plus(
+      max
+        .minus(min)
+        .times(level.minus(one))
+        .dividedBy(nine)
+    ) // レベル補正値
     .times(rank) // ランク補正値
     .times(one.plus(bonus.times(upgrade))) // 進化補正値
 
@@ -102,20 +111,25 @@ export function computeValue(props: {
 }
 
 export function computeValues(props: {
-  definition: Definition,
-  level: Level,
-  rank: Rank,
-  rarity: Rarity,
-  upgrade: Upgrade,
+  definition: Definition
+  level: Level
+  rank: Rank
+  rarity: Rarity
+  upgrade: Upgrade
 }): Value[] {
   const { definition, ...statuses } = props
-  return props.definition.abilities.map(ability => computeValue({
-    ability,
-    ...statuses,
-  }))
+  return props.definition.abilities.map(ability =>
+    computeValue({
+      ability,
+      ...statuses,
+    })
+  )
 }
 
-export function getDisplayValue(res: Value, onlyValue: boolean = false): string {
+export function getDisplayValue(
+  res: Value,
+  onlyValue: boolean = false
+): string {
   let value = res.value
   if (res.ability.type === 'percentage') value *= 100
   value = floor(value, res.ability.digits)

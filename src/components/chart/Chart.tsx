@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),
     },
-  }),
+  })
 )
 
 const Chart: React.FC = () => {
@@ -27,7 +27,8 @@ const Chart: React.FC = () => {
   const { definition, rank } = state
 
   const handleDefinitionChange = useCallback(
-    (definition: Regalia.Definition) => dispatch && dispatch(setDefinition(definition)),
+    (definition: Regalia.Definition) =>
+      dispatch && dispatch(setDefinition(definition)),
     [dispatch]
   )
 
@@ -46,8 +47,12 @@ const Chart: React.FC = () => {
       />
       {definition.abilities.map((ability, index) => {
         return (
-          <Box mb={(index < definition.abilities.length - 1) ? 2 : 0}>
-            <Typography className={classes.title} variant='subtitle1' gutterBottom>
+          <Box mb={index < definition.abilities.length - 1 ? 2 : 0}>
+            <Typography
+              className={classes.title}
+              variant="subtitle1"
+              gutterBottom
+            >
               {definition.abilities[index].name}
             </Typography>
             <ChartTable ability={ability} rank={rank} />

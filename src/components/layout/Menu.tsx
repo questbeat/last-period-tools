@@ -31,16 +31,28 @@ const Menu: React.FC<MenuProps> = props => {
   )
 
   return (
-    <div className={classes.list} onClick={handleClick} onKeyDown={handleKeyDown}>
+    <div
+      className={classes.list}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+    >
       <List>
         <ListSubheader>ツール一覧</ListSubheader>
-        <ListItemLink to='/calc' primary='レガリア計算機' />
-        <ListItemLink to='/chart' primary='レガリア能力値早見表' />
-        <ListItemLink external to='https://period-recorder.com' primary='ギルバト記録ツール' />
+        <ListItemLink to="/calc" primary="レガリア計算機" />
+        <ListItemLink to="/chart" primary="レガリア能力値早見表" />
+        <ListItemLink
+          external
+          to="https://period-recorder.com"
+          primary="ギルバト記録ツール"
+        />
         <Divider />
         <ListSubheader>その他</ListSubheader>
-        <ListItemLink to='/about' primary='このサイトについて' />
-        <ListItemLink external to='https://github.com/questbeat/last-period-tools' primary='GitHub' />
+        <ListItemLink to="/about" primary="このサイトについて" />
+        <ListItemLink
+          external
+          to="https://github.com/questbeat/last-period-tools"
+          primary="GitHub"
+        />
       </List>
     </div>
   )

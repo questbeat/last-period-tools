@@ -1,4 +1,10 @@
-import { AppBar, Drawer, IconButton, Toolbar, Typography } from '@material-ui/core'
+import {
+  AppBar,
+  Drawer,
+  IconButton,
+  Toolbar,
+  Typography,
+} from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import MenuIcon from '@material-ui/icons/Menu'
 import React, { useCallback, useState } from 'react'
@@ -15,38 +21,34 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
       flexGrow: 1,
     },
-  }),
+  })
 )
 
 const Header: React.FC = () => {
   const classes = useStyles()
   const [menuOpened, setMenuOpened] = useState(false)
 
-  const handleMenuOpen = useCallback(
-    () => setMenuOpened(true),
-    [setMenuOpened]
-  )
+  const handleMenuOpen = useCallback(() => setMenuOpened(true), [setMenuOpened])
 
-  const handleMenuClose = useCallback(
-    () => setMenuOpened(false),
-    [setMenuOpened]
-  )
+  const handleMenuClose = useCallback(() => setMenuOpened(false), [
+    setMenuOpened,
+  ])
 
   return (
-    <AppBar className={classes.header} position='static'>
+    <AppBar className={classes.header} position="static">
       <Drawer open={menuOpened} onClose={handleMenuClose}>
         <Menu onClick={handleMenuClose} onKeyDown={handleMenuClose} />
       </Drawer>
       <Toolbar>
         <IconButton
           className={classes.menuButton}
-          edge='start'
-          color='inherit'
+          edge="start"
+          color="inherit"
           onClick={handleMenuOpen}
         >
           <MenuIcon />
         </IconButton>
-        <Typography className={classes.title} variant='h6'>
+        <Typography className={classes.title} variant="h6">
           Last Period Tools
         </Typography>
       </Toolbar>

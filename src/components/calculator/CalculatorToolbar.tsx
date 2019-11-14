@@ -1,4 +1,10 @@
-import { IconButton, Menu, MenuItem, Toolbar, Typography } from '@material-ui/core'
+import {
+  IconButton,
+  Menu,
+  MenuItem,
+  Toolbar,
+  Typography,
+} from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import AddIcon from '@material-ui/icons/Add'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
@@ -23,7 +29,7 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),
     },
-  }),
+  })
 )
 
 type CalculatorToolbarProps = {
@@ -39,40 +45,32 @@ const CalculatorToolbar: React.FC<CalculatorToolbarProps> = props => {
   const { onAdd, onImport } = props
 
   const handleMenuOpen = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => setAnchorEl(event.currentTarget),
+    (event: React.MouseEvent<HTMLButtonElement>) =>
+      setAnchorEl(event.currentTarget),
     [setAnchorEl]
   )
 
-  const handleMenuClose = useCallback(
-    () => setAnchorEl(null),
-    [setAnchorEl]
-  )
+  const handleMenuClose = useCallback(() => setAnchorEl(null), [setAnchorEl])
 
-  const handleExport = useCallback(
-    () => {
-      const data = { regalias: props.regalias }
-      const blob = new Blob([JSON.stringify(data)], { type: 'application/json' })
+  const handleExport = useCallback(() => {
+    const data = { regalias: props.regalias }
+    const blob = new Blob([JSON.stringify(data)], { type: 'application/json' })
 
-      const elm = document.createElement('a')
-      elm.download = 'regalia-calc.json'
-      elm.href = window.URL.createObjectURL(blob)
-      elm.click()
+    const elm = document.createElement('a')
+    elm.download = 'regalia-calc.json'
+    elm.href = window.URL.createObjectURL(blob)
+    elm.click()
 
-      setAnchorEl(null)
-    },
-    [props.regalias, setAnchorEl]
-  )
+    setAnchorEl(null)
+  }, [props.regalias, setAnchorEl])
 
-  const handleImportClick = useCallback(
-    () => {
-      if (inputEl && inputEl.current) {
-        inputEl.current.click()
-      }
+  const handleImportClick = useCallback(() => {
+    if (inputEl && inputEl.current) {
+      inputEl.current.click()
+    }
 
-      setAnchorEl(null)
-    },
-    [inputEl, setAnchorEl]
-  )
+    setAnchorEl(null)
+  }, [inputEl, setAnchorEl])
 
   const handleImportChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -110,9 +108,7 @@ const CalculatorToolbar: React.FC<CalculatorToolbarProps> = props => {
   return (
     <Toolbar className={classes.toolbar}>
       <div className={classes.title}>
-        <Typography variant='h6'>
-          レガリア計算機
-        </Typography>
+        <Typography variant="h6">レガリア計算機</Typography>
       </div>
       <div className={classes.spacer}></div>
       <div className={classes.actions}>
@@ -127,7 +123,7 @@ const CalculatorToolbar: React.FC<CalculatorToolbarProps> = props => {
           <MenuItem onClick={handleExport}>エクスポート</MenuItem>
           <MenuItem onClick={handleImportClick}>インポート</MenuItem>
         </Menu>
-        <input type='file' onChange={handleImportChange} ref={inputEl} hidden />
+        <input type="file" onChange={handleImportChange} ref={inputEl} hidden />
       </div>
     </Toolbar>
   )

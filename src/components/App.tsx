@@ -1,5 +1,10 @@
 import indigo from '@material-ui/core/colors/indigo'
-import { createMuiTheme, createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+import {
+  createMuiTheme,
+  createStyles,
+  makeStyles,
+  Theme,
+} from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/styles'
 import React from 'react'
 import Footer from './layout/Footer'

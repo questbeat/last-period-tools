@@ -1,4 +1,10 @@
-import { Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import React, { useMemo } from 'react'
 import * as Regalia from '../../regalia'
@@ -12,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
     table: {
       minWidth: 650,
     },
-  }),
+  })
 )
 
 type CalculatorProps = {
@@ -43,10 +49,7 @@ const Calculator: React.FC<CalculatorProps> = props => {
     () => (
       <TableBody>
         {props.regalias.map((regalia, index) => (
-          <CalculatorTableRow
-            key={index}
-            regalia={regalia}
-          />
+          <CalculatorTableRow key={index} regalia={regalia} />
         ))}
       </TableBody>
     ),
