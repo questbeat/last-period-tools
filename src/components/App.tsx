@@ -20,7 +20,7 @@ const theme = createMuiTheme({
   },
 })
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles<Theme>(() =>
   createStyles({
     app: {
       display: 'flex',

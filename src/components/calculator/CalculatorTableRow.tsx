@@ -55,7 +55,7 @@ const regaliaUpgradeLabels: { [key in Regalia.Upgrade]: string } = {
   10: '+10',
 }
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles<Theme>(() =>
   createStyles({
     cell: {
       padding: '6px 16px 6px 16px',

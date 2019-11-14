@@ -7,7 +7,7 @@ import * as Regalia from '../../regalia'
 import ChartTable from './ChartTable'
 import ChartToolbar from './ChartToolbar'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles<Theme>(theme =>
   createStyles({
     paper: {
       width: '100%',

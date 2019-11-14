@@ -10,7 +10,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import React, { useCallback, useState } from 'react'
 import Menu from './Menu'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles<Theme>(theme =>
   createStyles({
     header: {
       flexGrow: 0,

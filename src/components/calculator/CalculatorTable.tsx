@@ -10,7 +10,7 @@ import React, { useMemo } from 'react'
 import * as Regalia from '../../regalia'
 import CalculatorTableRow from './CalculatorTableRow'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles<Theme>(() =>
   createStyles({
     cell: {
       padding: '6px 16px 6px 16px',

@@ -11,7 +11,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert'
 import React, { useCallback, useMemo, useRef, useState } from 'react'
 import * as Regalia from '../../regalia'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles<Theme>(theme =>
   createStyles({
     actions: {
       flex: '0 0 auto',

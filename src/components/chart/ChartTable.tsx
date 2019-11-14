@@ -9,7 +9,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import React from 'react'
 import * as Regalia from '../../regalia'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles<Theme>(() =>
   createStyles({
     cell: {
       padding: '6px 6px 6px 6px',

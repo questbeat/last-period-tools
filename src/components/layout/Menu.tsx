@@ -3,7 +3,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import React, { useCallback } from 'react'
 import ListItemLink from './ListItemLink'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles<Theme>(() =>
   createStyles({
     list: {
       width: 250,

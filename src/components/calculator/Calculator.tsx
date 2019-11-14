@@ -10,7 +10,7 @@ import * as Regalia from '../../regalia'
 import CalculatorTable from './CalculatorTable'
 import CalculatorToolbar from './CalculatorToolbar'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles<Theme>(theme =>
   createStyles({
     cell: {
       padding: '6px 16px 6px 16px',
