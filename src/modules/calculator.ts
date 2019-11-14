@@ -66,7 +66,7 @@ export function setRegalias(regalias: Regalia.Regalia[]) {
   }
 }
 
-export type Action = (
+export type CalculatorAction = (
   | ReturnType<typeof addRegalia>
   | ReturnType<typeof removeRegalia>
   | ReturnType<typeof setRegaliaDefinition>
@@ -96,7 +96,7 @@ export const calculatorInitialState: CalculatorState = {
 
 export function calculatorReducer(
   state = calculatorInitialState,
-  action: Action
+  action: CalculatorAction
 ): CalculatorState {
   switch (action.type) {
     case ActionType.AddRegalia:
