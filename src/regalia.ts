@@ -132,7 +132,7 @@ export function createRegalia(): Regalia {
   return {
     id: shortid.generate(),
     definition: definitions[0],
-    level: 1,
+    level: 10,
     rank: 'C',
     rarity: 1,
     upgrade: 1,
