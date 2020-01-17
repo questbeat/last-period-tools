@@ -8,7 +8,7 @@ import {
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
 import React, { useMemo } from 'react'
 import * as Regalia from '../../regalia'
-import CalculatorTableRow from './CalculatorTableRow'
+import { CalculatorTableRow } from './CalculatorTableRow'
 
 const useStyles = makeStyles<Theme>(() =>
   createStyles({
@@ -25,7 +25,7 @@ interface CalculatorProps {
   regalias: Regalia.Regalia[]
 }
 
-const Calculator: React.FC<CalculatorProps> = ({ regalias }) => {
+export const CalculatorTable: React.FC<CalculatorProps> = ({ regalias }) => {
   const classes = useStyles()
 
   const tableHead = useMemo(
@@ -63,5 +63,3 @@ const Calculator: React.FC<CalculatorProps> = ({ regalias }) => {
     </Table>
   )
 }
-
-export default Calculator

@@ -38,7 +38,7 @@ interface ChartToolbarProps {
   onRankChange: (rank: Regalia.Rank) => void
 }
 
-const ChartToolbar: React.FC<ChartToolbarProps> = ({
+export const ChartToolbar: React.FC<ChartToolbarProps> = ({
   definition,
   rank,
   onDefinitionChange,
@@ -105,5 +105,3 @@ const ChartToolbar: React.FC<ChartToolbarProps> = ({
     </Toolbar>
   )
 }
-
-export default ChartToolbar

@@ -25,7 +25,7 @@ interface ChartTableProps {
   rank: Regalia.Rank
 }
 
-const ChartTable: React.FC<ChartTableProps> = ({ ability, rank }) => {
+export const ChartTable: React.FC<ChartTableProps> = ({ ability, rank }) => {
   const classes = useStyles()
 
   let rows: React.ReactElement[] = []
@@ -86,5 +86,3 @@ const ChartTable: React.FC<ChartTableProps> = ({ ability, rank }) => {
     </Table>
   )
 }
-
-export default ChartTable

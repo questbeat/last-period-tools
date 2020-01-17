@@ -1,7 +1,7 @@
+import React, { useCallback } from 'react'
 import { Divider, List, ListSubheader } from '@material-ui/core'
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
-import React, { useCallback } from 'react'
-import ListItemLink from './ListItemLink'
+import { ListItemLink } from './ListItemLink'
 
 const useStyles = makeStyles<Theme>(() =>
   createStyles({
@@ -16,7 +16,7 @@ interface MenuProps {
   onKeyDown: () => void
 }
 
-const Menu: React.FC<MenuProps> = ({ onClick, onKeyDown }) => {
+export const Menu: React.FC<MenuProps> = ({ onClick, onKeyDown }) => {
   const classes = useStyles()
 
   const handleClick = useCallback(
@@ -56,5 +56,3 @@ const Menu: React.FC<MenuProps> = ({ onClick, onKeyDown }) => {
     </div>
   )
 }
-
-export default Menu

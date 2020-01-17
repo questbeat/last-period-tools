@@ -1,3 +1,4 @@
+import React from 'react'
 import indigo from '@material-ui/core/colors/indigo'
 import {
   Theme,
@@ -6,10 +7,9 @@ import {
   makeStyles,
 } from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/styles'
-import React from 'react'
-import Footer from './layout/Footer'
-import Header from './layout/Header'
-import Main from './layout/Main'
+import { Footer } from './layout/Footer'
+import { Header } from './layout/Header'
+import { Main } from './layout/Main'
 
 const theme = createMuiTheme({
   palette: {
@@ -30,7 +30,7 @@ const useStyles = makeStyles<Theme>(() =>
   })
 )
 
-const App: React.FC = () => {
+export const App: React.FC = () => {
   const classes = useStyles()
 
   return (
@@ -43,5 +43,3 @@ const App: React.FC = () => {
     </div>
   )
 }
-
-export default App

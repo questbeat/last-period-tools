@@ -7,8 +7,8 @@ import {
 } from '../../contexts/calculator'
 import { addRegalia, setRegalias } from '../../modules/calculator'
 import * as Regalia from '../../regalia'
-import CalculatorTable from './CalculatorTable'
-import CalculatorToolbar from './CalculatorToolbar'
+import { CalculatorTable } from './CalculatorTable'
+import { CalculatorToolbar } from './CalculatorToolbar'
 
 const useStyles = makeStyles<Theme>(theme =>
   createStyles({
@@ -26,7 +26,7 @@ const useStyles = makeStyles<Theme>(theme =>
   })
 )
 
-const Calculator: React.FC = () => {
+const InnerCalculator: React.FC = () => {
   const classes = useStyles()
   const { dispatch, state } = useContext(CalculatorContext)
   const regalias = state.regalias
@@ -58,12 +58,10 @@ const Calculator: React.FC = () => {
   )
 }
 
-const CalculatorWithContext: React.FC = () => {
+export const Calculator: React.FC = () => {
   return (
     <CalculatorContextProvider>
-      <Calculator />
+      <InnerCalculator />
     </CalculatorContextProvider>
   )
 }
-
-export default CalculatorWithContext

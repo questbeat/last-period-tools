@@ -1,7 +1,7 @@
-import { applyMiddleware, createStore } from 'redux'
+import { applyMiddleware, createStore as reduxCreateStore } from 'redux'
 import { State, rootReducer } from './modules'
 
-export default (initialState: State) => {
+export const createStore = (initialState: State) => {
   let middlewares = []
 
   if (process.env.NODE_ENV === 'development') {
@@ -9,7 +9,7 @@ export default (initialState: State) => {
     middlewares.push(logger)
   }
 
-  const store = createStore(
+  const store = reduxCreateStore(
     rootReducer,
     initialState,
     applyMiddleware(...middlewares)

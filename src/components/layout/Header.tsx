@@ -1,3 +1,4 @@
+import React, { useCallback, useState } from 'react'
 import {
   AppBar,
   Drawer,
@@ -7,8 +8,7 @@ import {
 } from '@material-ui/core'
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
 import MenuIcon from '@material-ui/icons/Menu'
-import React, { useCallback, useState } from 'react'
-import Menu from './Menu'
+import { Menu } from './Menu'
 
 const useStyles = makeStyles<Theme>(theme =>
   createStyles({
@@ -24,7 +24,7 @@ const useStyles = makeStyles<Theme>(theme =>
   })
 )
 
-const Header: React.FC = () => {
+export const Header: React.FC = () => {
   const classes = useStyles()
   const [menuOpened, setMenuOpened] = useState(false)
 
@@ -55,5 +55,3 @@ const Header: React.FC = () => {
     </AppBar>
   )
 }
-
-export default Header

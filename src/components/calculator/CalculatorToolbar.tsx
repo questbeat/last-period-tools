@@ -38,7 +38,7 @@ interface CalculatorToolbarProps {
   onImport: (regalias: Regalia.Regalia[]) => void
 }
 
-const CalculatorToolbar: React.FC<CalculatorToolbarProps> = ({
+export const CalculatorToolbar: React.FC<CalculatorToolbarProps> = ({
   regalias,
   onAdd,
   onImport,
@@ -131,5 +131,3 @@ const CalculatorToolbar: React.FC<CalculatorToolbarProps> = ({
     </Toolbar>
   )
 }
-
-export default CalculatorToolbar

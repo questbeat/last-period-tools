@@ -4,8 +4,8 @@ import React, { useCallback, useContext } from 'react'
 import { ChartContext, ChartContextProvider } from '../../contexts/chart'
 import { setDefinition, setRank } from '../../modules/chart'
 import * as Regalia from '../../regalia'
-import ChartTable from './ChartTable'
-import ChartToolbar from './ChartToolbar'
+import { ChartTable } from './ChartTable'
+import { ChartToolbar } from './ChartToolbar'
 
 const useStyles = makeStyles<Theme>(theme =>
   createStyles({
@@ -21,7 +21,7 @@ const useStyles = makeStyles<Theme>(theme =>
   })
 )
 
-const Chart: React.FC = () => {
+const InnerChart: React.FC = () => {
   const classes = useStyles()
   const { dispatch, state } = useContext(ChartContext)
   const { definition, rank } = state
@@ -63,12 +63,10 @@ const Chart: React.FC = () => {
   )
 }
 
-const ChartWithContext: React.FC = () => {
+export const Chart: React.FC = () => {
   return (
     <ChartContextProvider>
-      <Chart />
+      <InnerChart />
     </ChartContextProvider>
   )
 }
-
-export default ChartWithContext

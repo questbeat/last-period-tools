@@ -1,10 +1,10 @@
+import React from 'react'
 import { Container } from '@material-ui/core'
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
-import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Calculator from '../calculator/Calculator'
-import Chart from '../chart/Chart'
-import About from '../static/About'
+import { About } from '../static/About'
+import { Calculator } from '../calculator/Calculator'
+import { Chart } from '../chart/Chart'
 
 const useStyles = makeStyles<Theme>(theme =>
   createStyles({
@@ -17,7 +17,7 @@ const useStyles = makeStyles<Theme>(theme =>
   })
 )
 
-const Main: React.FC = () => {
+export const Main: React.FC = () => {
   const classes = useStyles()
 
   return (
@@ -33,5 +33,3 @@ const Main: React.FC = () => {
     </main>
   )
 }
-
-export default Main

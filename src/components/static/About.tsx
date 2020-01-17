@@ -31,7 +31,7 @@ const Paragraph: React.FC = ({ children }) => {
   return <Typography component="p">{children}</Typography>
 }
 
-const About: React.FC = () => {
+export const About: React.FC = () => {
   const classes = useStyles()
 
   return (
@@ -104,5 +104,3 @@ const About: React.FC = () => {
     </div>
   )
 }
-
-export default About

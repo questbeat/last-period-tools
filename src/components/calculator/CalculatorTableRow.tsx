@@ -67,7 +67,9 @@ interface CalculatorTableRowProps {
   regalia: Regalia.Regalia
 }
 
-const CalculatorTableRow: React.FC<CalculatorTableRowProps> = ({ regalia }) => {
+export const CalculatorTableRow: React.FC<CalculatorTableRowProps> = ({
+  regalia,
+}) => {
   const classes = useStyles()
   const { dispatch } = useContext(CalculatorContext)
 
@@ -287,5 +289,3 @@ const CalculatorTableRow: React.FC<CalculatorTableRowProps> = ({ regalia }) => {
     </TableRow>
   )
 }
-
-export default CalculatorTableRow

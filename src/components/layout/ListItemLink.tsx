@@ -14,7 +14,7 @@ interface ListItemLinkProps {
   to: string
 }
 
-const ListItemLink: React.FC<ListItemLinkProps> = ({
+export const ListItemLink: React.FC<ListItemLinkProps> = ({
   external,
   primary,
   to,
@@ -53,5 +53,3 @@ const ListItemLink: React.FC<ListItemLinkProps> = ({
     </li>
   )
 }
-
-export default ListItemLink
