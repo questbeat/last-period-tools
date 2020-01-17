@@ -20,7 +20,7 @@ const useStyles = makeStyles<Theme>(() =>
   })
 )
 
-type ChartTableProps = {
+interface ChartTableProps {
   ability: Regalia.Ability
   rank: Regalia.Rank
 }

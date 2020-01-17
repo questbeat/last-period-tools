@@ -8,7 +8,7 @@ import {
   LinkProps as RouterLinkProps,
 } from 'react-router-dom'
 
-type ListItemLinkProps = {
+interface ListItemLinkProps {
   external?: boolean
   primary: string
   to: string

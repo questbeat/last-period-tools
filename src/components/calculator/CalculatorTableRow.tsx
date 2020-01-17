@@ -63,7 +63,7 @@ const useStyles = makeStyles<Theme>(() =>
   })
 )
 
-type CalculatorTableRowProps = {
+interface CalculatorTableRowProps {
   regalia: Regalia.Regalia
 }
 

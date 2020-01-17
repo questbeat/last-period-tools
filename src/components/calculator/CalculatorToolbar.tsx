@@ -32,7 +32,7 @@ const useStyles = makeStyles<Theme>(theme =>
   })
 )
 
-type CalculatorToolbarProps = {
+interface CalculatorToolbarProps {
   regalias: Regalia.Regalia[]
   onAdd: () => void
   onImport: (regalias: Regalia.Regalia[]) => void

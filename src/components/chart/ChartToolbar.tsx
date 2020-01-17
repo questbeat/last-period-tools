@@ -31,7 +31,7 @@ const useStyles = makeStyles<Theme>(theme =>
   })
 )
 
-type ChartToolbarProps = {
+interface ChartToolbarProps {
   definition: Regalia.Definition
   rank: Regalia.Rank
   onDefinitionChange: (definition: Regalia.Definition) => void

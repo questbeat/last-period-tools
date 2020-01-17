@@ -11,7 +11,7 @@ const useStyles = makeStyles<Theme>(() =>
   })
 )
 
-type MenuProps = {
+interface MenuProps {
   onClick: () => void
   onKeyDown: () => void
 }

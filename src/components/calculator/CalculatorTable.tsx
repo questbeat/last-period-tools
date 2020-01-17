@@ -21,7 +21,7 @@ const useStyles = makeStyles<Theme>(() =>
   })
 )
 
-type CalculatorProps = {
+interface CalculatorProps {
   regalias: Regalia.Regalia[]
 }
 
