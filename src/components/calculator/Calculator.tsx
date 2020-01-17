@@ -1,6 +1,6 @@
 import { Paper } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useContext, useMemo } from 'react'
 import {
   CalculatorContext,
   CalculatorContextProvider,
@@ -28,7 +28,7 @@ const useStyles = makeStyles<Theme>(theme =>
 
 const Calculator: React.FC = () => {
   const classes = useStyles()
-  const { dispatch, state } = React.useContext(CalculatorContext)
+  const { dispatch, state } = useContext(CalculatorContext)
   const regalias = state.regalias
 
   const allRegalias = useMemo(

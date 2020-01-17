@@ -2,7 +2,7 @@ import { Link, ListItem, ListItemText } from '@material-ui/core'
 import { LinkProps } from '@material-ui/core/Link'
 import OpenInNewIcon from '@material-ui/icons/OpenInNew'
 import { Omit } from '@material-ui/types'
-import React from 'react'
+import React, { useMemo } from 'react'
 import {
   Link as RouterLink,
   LinkProps as RouterLinkProps,
@@ -17,7 +17,7 @@ type ListItemLinkProps = {
 const ListItemLink: React.FC<ListItemLinkProps> = props => {
   const { external, primary, to } = props
 
-  const renderLink = React.useMemo(() => {
+  const renderLink = useMemo(() => {
     if (external === true) {
       return React.forwardRef<
         HTMLAnchorElement,
