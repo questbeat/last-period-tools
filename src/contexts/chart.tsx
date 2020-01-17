@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Redux from 'redux'
 import { State } from '../modules'
-import { ChartAction, chartInitialState, ChartState } from '../modules/chart'
+import { ChartAction, ChartState, chartInitialState } from '../modules/chart'
 
 interface ChartContextProps {
   dispatch?: Redux.Dispatch<ChartAction>

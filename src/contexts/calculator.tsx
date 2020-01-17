@@ -4,8 +4,8 @@ import Redux from 'redux'
 import { State } from '../modules'
 import {
   CalculatorAction,
-  calculatorInitialState,
   CalculatorState,
+  calculatorInitialState,
 } from '../modules/calculator'
 
 interface CalculatorContextProps {

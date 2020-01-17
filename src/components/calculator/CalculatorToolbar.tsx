@@ -5,7 +5,7 @@ import {
   Toolbar,
   Typography,
 } from '@material-ui/core'
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
 import AddIcon from '@material-ui/icons/Add'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import React, { useCallback, useMemo, useRef, useState } from 'react'

@@ -1,9 +1,9 @@
 import indigo from '@material-ui/core/colors/indigo'
 import {
+  Theme,
   createMuiTheme,
   createStyles,
   makeStyles,
-  Theme,
 } from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/styles'
 import React from 'react'

@@ -1,5 +1,5 @@
 import { applyMiddleware, createStore } from 'redux'
-import { rootReducer, State } from './modules'
+import { State, rootReducer } from './modules'
 
 export default (initialState: State) => {
   let middlewares = []

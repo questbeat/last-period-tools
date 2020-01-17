@@ -5,7 +5,7 @@ import {
   Toolbar,
   Typography,
 } from '@material-ui/core'
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
 import MenuIcon from '@material-ui/icons/Menu'
 import React, { useCallback, useState } from 'react'
 import Menu from './Menu'

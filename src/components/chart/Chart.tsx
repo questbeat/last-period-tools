@@ -1,5 +1,5 @@
 import { Box, Paper, Typography } from '@material-ui/core'
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
 import React, { useCallback, useContext } from 'react'
 import { ChartContext, ChartContextProvider } from '../../contexts/chart'
 import { setDefinition, setRank } from '../../modules/chart'

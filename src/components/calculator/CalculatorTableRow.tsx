@@ -7,7 +7,7 @@ import {
   TableCell,
   TableRow,
 } from '@material-ui/core'
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
 import DeleteIcon from '@material-ui/icons/Delete'
 import React, { useCallback, useContext, useMemo } from 'react'
 import { CalculatorContext } from '../../contexts/calculator'

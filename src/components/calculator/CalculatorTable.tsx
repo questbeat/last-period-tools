@@ -5,7 +5,7 @@ import {
   TableHead,
   TableRow,
 } from '@material-ui/core'
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
 import React, { useMemo } from 'react'
 import * as Regalia from '../../regalia'
 import CalculatorTableRow from './CalculatorTableRow'
