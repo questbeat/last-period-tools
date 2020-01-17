@@ -25,7 +25,7 @@ interface CalculatorProps {
   regalias: Regalia.Regalia[]
 }
 
-const Calculator: React.FC<CalculatorProps> = props => {
+const Calculator: React.FC<CalculatorProps> = ({ regalias }) => {
   const classes = useStyles()
 
   const tableHead = useMemo(
@@ -48,12 +48,12 @@ const Calculator: React.FC<CalculatorProps> = props => {
   const tableBody = useMemo(
     () => (
       <TableBody>
-        {props.regalias.map((regalia, index) => (
+        {regalias.map((regalia, index) => (
           <CalculatorTableRow key={index} regalia={regalia} />
         ))}
       </TableBody>
     ),
-    [props.regalias]
+    [regalias]
   )
 
   return (

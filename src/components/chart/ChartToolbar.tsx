@@ -38,9 +38,13 @@ interface ChartToolbarProps {
   onRankChange: (rank: Regalia.Rank) => void
 }
 
-const ChartToolbar: React.FC<ChartToolbarProps> = props => {
+const ChartToolbar: React.FC<ChartToolbarProps> = ({
+  definition,
+  rank,
+  onDefinitionChange,
+  onRankChange,
+}) => {
   const classes = useStyles()
-  const { onDefinitionChange, onRankChange } = props
 
   const handleDefinitionChange = useCallback(
     (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
@@ -67,7 +71,7 @@ const ChartToolbar: React.FC<ChartToolbarProps> = props => {
       <div className={classes.forms}>
         <FormControl className={classes.definitionSelector}>
           <Select
-            value={props.definition.name}
+            value={definition.name}
             onChange={handleDefinitionChange}
             inputProps={{
               name: 'type',
@@ -83,7 +87,7 @@ const ChartToolbar: React.FC<ChartToolbarProps> = props => {
         </FormControl>
         <FormControl>
           <Select
-            value={props.rank}
+            value={rank}
             onChange={handleRankChange}
             inputProps={{
               name: 'rank',

@@ -14,9 +14,11 @@ interface ListItemLinkProps {
   to: string
 }
 
-const ListItemLink: React.FC<ListItemLinkProps> = props => {
-  const { external, primary, to } = props
-
+const ListItemLink: React.FC<ListItemLinkProps> = ({
+  external,
+  primary,
+  to,
+}) => {
   const renderLink = useMemo(() => {
     if (external === true) {
       return React.forwardRef<

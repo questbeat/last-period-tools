@@ -25,7 +25,7 @@ interface ChartTableProps {
   rank: Regalia.Rank
 }
 
-const ChartTable: React.FC<ChartTableProps> = props => {
+const ChartTable: React.FC<ChartTableProps> = ({ ability, rank }) => {
   const classes = useStyles()
 
   let rows: React.ReactElement[] = []
@@ -44,8 +44,8 @@ const ChartTable: React.FC<ChartTableProps> = props => {
       cells = cells.concat(
         Regalia.levels.map((level, index) => {
           const value = Regalia.computeValue({
-            ability: props.ability,
-            rank: props.rank,
+            ability: ability,
+            rank: rank,
             rarity,
             upgrade: upgrade as Regalia.Upgrade,
             level,

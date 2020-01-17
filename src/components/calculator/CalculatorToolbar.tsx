@@ -38,11 +38,14 @@ interface CalculatorToolbarProps {
   onImport: (regalias: Regalia.Regalia[]) => void
 }
 
-const CalculatorToolbar: React.FC<CalculatorToolbarProps> = props => {
+const CalculatorToolbar: React.FC<CalculatorToolbarProps> = ({
+  regalias,
+  onAdd,
+  onImport,
+}) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const classes = useStyles()
   const inputEl = useRef<HTMLInputElement>(null)
-  const { onAdd, onImport } = props
 
   const handleMenuOpen = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) =>
@@ -53,7 +56,7 @@ const CalculatorToolbar: React.FC<CalculatorToolbarProps> = props => {
   const handleMenuClose = useCallback(() => setAnchorEl(null), [setAnchorEl])
 
   const handleExport = useCallback(() => {
-    const data = { regalias: props.regalias }
+    const data = { regalias }
     const blob = new Blob([JSON.stringify(data)], { type: 'application/json' })
 
     const elm = document.createElement('a')
@@ -62,7 +65,7 @@ const CalculatorToolbar: React.FC<CalculatorToolbarProps> = props => {
     elm.click()
 
     setAnchorEl(null)
-  }, [props.regalias, setAnchorEl])
+  }, [regalias])
 
   const handleImportClick = useCallback(() => {
     if (inputEl && inputEl.current) {

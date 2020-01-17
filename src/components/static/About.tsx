@@ -13,22 +13,22 @@ const useStyles = makeStyles<Theme>(theme =>
   })
 )
 
-const Section: React.FC = props => {
-  return <Box mb={4}>{props.children}</Box>
+const Section: React.FC = ({ children }) => {
+  return <Box mb={4}>{children}</Box>
 }
 
-const SectionTitle: React.FC = props => {
+const SectionTitle: React.FC = ({ children }) => {
   const classes = useStyles()
 
   return (
     <Typography className={classes.sectionTitle} component="h2" variant="h6">
-      {props.children}
+      {children}
     </Typography>
   )
 }
 
-const Paragraph: React.FC = props => {
-  return <Typography component="p">{props.children}</Typography>
+const Paragraph: React.FC = ({ children }) => {
+  return <Typography component="p">{children}</Typography>
 }
 
 const About: React.FC = () => {

@@ -16,9 +16,8 @@ interface MenuProps {
   onKeyDown: () => void
 }
 
-const Menu: React.FC<MenuProps> = props => {
+const Menu: React.FC<MenuProps> = ({ onClick, onKeyDown }) => {
   const classes = useStyles()
-  const { onClick, onKeyDown } = props
 
   const handleClick = useCallback(
     (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => onClick(),

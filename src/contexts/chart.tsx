@@ -13,13 +13,13 @@ export const ChartContext = React.createContext<ChartContextProps>({
   state: chartInitialState,
 })
 
-export const ChartContextProvider: React.FC = props => {
+export const ChartContextProvider: React.FC = ({ children }) => {
   const dispatch = useDispatch()
   const state = useSelector<State, ChartState>(state => state.chart)
 
   return (
     <ChartContext.Provider value={{ dispatch, state }}>
-      {props.children}
+      {children}
     </ChartContext.Provider>
   )
 }

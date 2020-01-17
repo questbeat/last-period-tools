@@ -17,13 +17,13 @@ export const CalculatorContext = React.createContext<CalculatorContextProps>({
   state: calculatorInitialState,
 })
 
-export const CalculatorContextProvider: React.FC = props => {
+export const CalculatorContextProvider: React.FC = ({ children }) => {
   const dispatch = useDispatch()
   const state = useSelector<State, CalculatorState>(state => state.calculator)
 
   return (
     <CalculatorContext.Provider value={{ dispatch, state }}>
-      {props.children}
+      {children}
     </CalculatorContext.Provider>
   )
 }

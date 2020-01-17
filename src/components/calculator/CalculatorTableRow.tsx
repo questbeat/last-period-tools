@@ -67,7 +67,7 @@ interface CalculatorTableRowProps {
   regalia: Regalia.Regalia
 }
 
-const CalculatorTableRow: React.FC<CalculatorTableRowProps> = props => {
+const CalculatorTableRow: React.FC<CalculatorTableRowProps> = ({ regalia }) => {
   const classes = useStyles()
   const { dispatch } = useContext(CalculatorContext)
 
@@ -76,65 +76,57 @@ const CalculatorTableRow: React.FC<CalculatorTableRowProps> = props => {
       const name = event.target.value as string
       const definition = Regalia.definitions.find(d => d.name === name)
       if (dispatch && definition) {
-        dispatch(setRegaliaDefinition(props.regalia.id, definition))
+        dispatch(setRegaliaDefinition(regalia.id, definition))
       }
     },
-    [dispatch, props.regalia.id]
+    [dispatch, regalia.id]
   )
 
   const handleRankChange = useCallback(
     (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
       if (dispatch) {
-        dispatch(
-          setRegaliaRank(props.regalia.id, event.target.value as Regalia.Rank)
-        )
+        dispatch(setRegaliaRank(regalia.id, event.target.value as Regalia.Rank))
       }
     },
-    [dispatch, props.regalia.id]
+    [dispatch, regalia.id]
   )
 
   const handleRarityChange = useCallback(
     (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
       if (dispatch) {
         dispatch(
-          setRegaliaRarity(
-            props.regalia.id,
-            event.target.value as Regalia.Rarity
-          )
+          setRegaliaRarity(regalia.id, event.target.value as Regalia.Rarity)
         )
       }
     },
-    [dispatch, props.regalia.id]
+    [dispatch, regalia.id]
   )
 
   const handleUpgradeChange = useCallback(
     (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
       if (dispatch) {
         dispatch(
-          setRegaliaUpgrade(
-            props.regalia.id,
-            event.target.value as Regalia.Upgrade
-          )
+          setRegaliaUpgrade(regalia.id, event.target.value as Regalia.Upgrade)
         )
       }
     },
-    [dispatch, props.regalia.id]
+    [dispatch, regalia.id]
   )
 
   const handleLevelChange = useCallback(
     (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
       if (dispatch) {
         dispatch(
-          setRegaliaLevel(props.regalia.id, event.target.value as Regalia.Level)
+          setRegaliaLevel(regalia.id, event.target.value as Regalia.Level)
         )
       }
     },
-    [dispatch, props.regalia.id]
+    [dispatch, regalia.id]
   )
 
   const handleDelete = useCallback(
-    () => dispatch && dispatch(removeRegalia(props.regalia.id)),
-    [dispatch, props.regalia.id]
+    () => dispatch && dispatch(removeRegalia(regalia.id)),
+    [dispatch, regalia.id]
   )
 
   const typeCell = useMemo(
@@ -142,7 +134,7 @@ const CalculatorTableRow: React.FC<CalculatorTableRowProps> = props => {
       <TableCell className={classes.cell}>
         <FormControl>
           <Select
-            value={props.regalia.definition.name}
+            value={regalia.definition.name}
             onChange={handleTypeChange}
             inputProps={{
               name: 'type',
@@ -158,7 +150,7 @@ const CalculatorTableRow: React.FC<CalculatorTableRowProps> = props => {
         </FormControl>
       </TableCell>
     ),
-    [classes.cell, handleTypeChange, props.regalia.definition]
+    [classes.cell, handleTypeChange, regalia.definition.name]
   )
 
   const rankCell = useMemo(
@@ -166,7 +158,7 @@ const CalculatorTableRow: React.FC<CalculatorTableRowProps> = props => {
       <TableCell className={classes.cell}>
         <FormControl>
           <Select
-            value={props.regalia.rank}
+            value={regalia.rank}
             onChange={handleRankChange}
             inputProps={{
               name: 'rank',
@@ -182,7 +174,7 @@ const CalculatorTableRow: React.FC<CalculatorTableRowProps> = props => {
         </FormControl>
       </TableCell>
     ),
-    [classes.cell, handleRankChange, props.regalia.rank]
+    [classes.cell, handleRankChange, regalia.rank]
   )
 
   const rarityCell = useMemo(
@@ -190,7 +182,7 @@ const CalculatorTableRow: React.FC<CalculatorTableRowProps> = props => {
       <TableCell className={classes.cell}>
         <FormControl>
           <Select
-            value={props.regalia.rarity}
+            value={regalia.rarity}
             onChange={handleRarityChange}
             inputProps={{
               name: 'rarity',
@@ -206,7 +198,7 @@ const CalculatorTableRow: React.FC<CalculatorTableRowProps> = props => {
         </FormControl>
       </TableCell>
     ),
-    [classes.cell, handleRarityChange, props.regalia.rarity]
+    [classes.cell, handleRarityChange, regalia.rarity]
   )
 
   const upgradeCell = useMemo(
@@ -214,7 +206,7 @@ const CalculatorTableRow: React.FC<CalculatorTableRowProps> = props => {
       <TableCell className={classes.cell}>
         <FormControl>
           <Select
-            value={props.regalia.upgrade}
+            value={regalia.upgrade}
             onChange={handleUpgradeChange}
             inputProps={{
               name: 'plus',
@@ -230,7 +222,7 @@ const CalculatorTableRow: React.FC<CalculatorTableRowProps> = props => {
         </FormControl>
       </TableCell>
     ),
-    [classes.cell, handleUpgradeChange, props.regalia.upgrade]
+    [classes.cell, handleUpgradeChange, regalia.upgrade]
   )
 
   const levelCell = useMemo(
@@ -238,7 +230,7 @@ const CalculatorTableRow: React.FC<CalculatorTableRowProps> = props => {
       <TableCell className={classes.cell}>
         <FormControl>
           <Select
-            value={props.regalia.level}
+            value={regalia.level}
             onChange={handleLevelChange}
             inputProps={{
               name: 'level',
@@ -254,11 +246,11 @@ const CalculatorTableRow: React.FC<CalculatorTableRowProps> = props => {
         </FormControl>
       </TableCell>
     ),
-    [classes.cell, handleLevelChange, props.regalia.level]
+    [classes.cell, handleLevelChange, regalia.level]
   )
 
   const displayValueCell = useMemo(() => {
-    const values = Regalia.computeValues(props.regalia)
+    const values = Regalia.computeValues(regalia)
     const displayValues = values.map(value => Regalia.getDisplayValue(value))
 
     return (
@@ -270,7 +262,7 @@ const CalculatorTableRow: React.FC<CalculatorTableRowProps> = props => {
         </Box>
       </TableCell>
     )
-  }, [classes.cell, props.regalia])
+  }, [classes.cell, regalia])
 
   const actionCell = useMemo(
     () => (
