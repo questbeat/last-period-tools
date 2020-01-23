@@ -28,7 +28,7 @@ interface ChartTableProps {
 export const ChartTable: React.FC<ChartTableProps> = ({ ability, rank }) => {
   const classes = useStyles()
 
-  let rows: React.ReactElement[] = []
+  const rows: React.ReactElement[] = []
   Regalia.rarities.forEach(rarity => {
     const upgrades = rarity < 4 ? [rarity - 1] : [3, 4, 5, 6, 7, 8, 9, 10]
     upgrades.forEach(upgrade => {

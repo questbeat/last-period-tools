@@ -51,6 +51,7 @@ export const rankValues: { [key in Rank]: number } = {
   S: 1.4,
 }
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const definitions: Definition[] = require('./definitions.json')
 definitions.sort((a, b) => {
   if (a.name < b.name) {
@@ -126,10 +127,7 @@ export function computeValues(props: {
   )
 }
 
-export function getDisplayValue(
-  res: Value,
-  onlyValue: boolean = false
-): string {
+export function getDisplayValue(res: Value, onlyValue = false): string {
   let value = res.value
   if (res.ability.type === 'percentage') value *= 100
   value = floor(value, res.ability.digits)

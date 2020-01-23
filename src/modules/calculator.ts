@@ -101,7 +101,7 @@ export function calculatorReducer(
   action: CalculatorAction
 ): CalculatorState {
   switch (action.type) {
-    case ActionType.AddRegalia:
+    case ActionType.AddRegalia: {
       const regalia = Regalia.createRegalia()
 
       return {
@@ -115,8 +115,9 @@ export function calculatorReducer(
           allIds: [...state.regalias.allIds, regalia.id],
         },
       }
+    }
 
-    case ActionType.RemoveRegalia:
+    case ActionType.RemoveRegalia: {
       const { [action.payload.id]: value, ...byIds } = state.regalias.byId
       const allIds = state.regalias.allIds.filter(
         id => id !== action.payload.id
@@ -130,6 +131,7 @@ export function calculatorReducer(
           allIds: allIds,
         },
       }
+    }
 
     case ActionType.SetRegaliaDefinition:
       return {
@@ -206,7 +208,7 @@ export function calculatorReducer(
         },
       }
 
-    case ActionType.SetRegalias:
+    case ActionType.SetRegalias: {
       const regalias = action.payload.regalias
 
       return {
@@ -217,6 +219,7 @@ export function calculatorReducer(
           allIds: regalias.map(r => r.id),
         },
       }
+    }
 
     default:
       return state
