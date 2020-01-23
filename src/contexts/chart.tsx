@@ -1,21 +1,23 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import Redux from 'redux'
-import { State } from '../modules'
-import { ChartAction, ChartState, chartInitialState } from '../modules/chart'
+import {
+  ChartAction,
+  ChartState,
+  chartInitialState,
+  chartReducer,
+} from '../modules/chart'
 
 interface ChartContextProps {
-  dispatch?: Redux.Dispatch<ChartAction>
+  dispatch: React.Dispatch<ChartAction>
   state: ChartState
 }
 
 export const ChartContext = React.createContext<ChartContextProps>({
+  dispatch: () => {},
   state: chartInitialState,
 })
 
 export const ChartContextProvider: React.FC = ({ children }) => {
-  const dispatch = useDispatch()
-  const state = useSelector<State, ChartState>(state => state.chart)
+  const [state, dispatch] = React.useReducer(chartReducer, chartInitialState)
 
   return (
     <ChartContext.Provider value={{ dispatch, state }}>
