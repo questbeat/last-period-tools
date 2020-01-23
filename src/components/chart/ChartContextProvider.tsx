@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createContext, useReducer } from 'react'
 import * as Regalia from '../../regalia'
 import { ChartAction, ChartState, chartReducer } from '../../modules/chart'
 
@@ -12,13 +12,13 @@ interface ChartContextProps {
   state: ChartState
 }
 
-export const ChartContext = React.createContext<ChartContextProps>({
+export const ChartContext = createContext<ChartContextProps>({
   dispatch: () => {},
   state: initialState,
 })
 
 export const ChartContextProvider: React.FC = ({ children }) => {
-  const [state, dispatch] = React.useReducer(chartReducer, initialState)
+  const [state, dispatch] = useReducer(chartReducer, initialState)
 
   return (
     <ChartContext.Provider value={{ dispatch, state }}>
