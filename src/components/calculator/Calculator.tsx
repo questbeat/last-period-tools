@@ -4,7 +4,7 @@ import React, { useCallback, useContext, useMemo } from 'react'
 import {
   CalculatorContext,
   CalculatorContextProvider,
-} from '../../contexts/calculator'
+} from './CalculatorContextProvider'
 import { addRegalia, setRegalias } from '../../modules/calculator'
 import * as Regalia from '../../regalia'
 import { CalculatorTable } from './CalculatorTable'

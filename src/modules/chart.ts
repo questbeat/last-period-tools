@@ -1,20 +1,21 @@
+import React from 'react'
 import * as Regalia from '../regalia'
 
-enum ActionType {
+enum ChartActionType {
   SetDefinition = 'CHART_SET_DEFINITION',
   SetRank = 'CHART_SET_RANK',
 }
 
 export function setDefinition(definition: Regalia.Definition) {
   return {
-    type: ActionType.SetDefinition as const,
+    type: ChartActionType.SetDefinition as const,
     payload: { definition },
   }
 }
 
 export function setRank(rank: Regalia.Rank) {
   return {
-    type: ActionType.SetRank as const,
+    type: ChartActionType.SetRank as const,
     payload: { rank },
   }
 }
@@ -28,23 +29,18 @@ export interface ChartState {
   rank: Regalia.Rank
 }
 
-export const chartInitialState: ChartState = {
-  definition: Regalia.definitions[0],
-  rank: 'C',
-}
-
-export function chartReducer(
-  state = chartInitialState,
-  action: ChartAction
-): ChartState {
+export const chartReducer: React.Reducer<ChartState, ChartAction> = (
+  state,
+  action
+) => {
   switch (action.type) {
-    case ActionType.SetDefinition:
+    case ChartActionType.SetDefinition:
       return {
         ...state,
         definition: action.payload.definition,
       }
 
-    case ActionType.SetRank:
+    case ChartActionType.SetRank:
       return {
         ...state,
         rank: action.payload.rank,

@@ -10,7 +10,7 @@ import {
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
 import DeleteIcon from '@material-ui/icons/Delete'
 import React, { useCallback, useContext, useMemo } from 'react'
-import { CalculatorContext } from '../../contexts/calculator'
+import { CalculatorContext } from './CalculatorContextProvider'
 import {
   removeRegalia,
   setRegaliaDefinition,

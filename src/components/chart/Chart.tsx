@@ -1,7 +1,7 @@
 import { Box, Paper, Typography } from '@material-ui/core'
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
 import React, { useCallback, useContext } from 'react'
-import { ChartContext, ChartContextProvider } from '../../contexts/chart'
+import { ChartContext, ChartContextProvider } from './ChartContextProvider'
 import { setDefinition, setRank } from '../../modules/chart'
 import * as Regalia from '../../regalia'
 import { ChartTable } from './ChartTable'

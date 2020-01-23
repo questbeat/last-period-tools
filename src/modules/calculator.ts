@@ -1,6 +1,6 @@
 import * as Regalia from '../regalia'
 
-enum ActionType {
+enum CalculatorActionType {
   AddRegalia = 'CALC_ADD_REGALIA',
   RemoveRegalia = 'CALC_REMOVE_REGALIA',
   SetRegaliaDefinition = 'CALC_SET_REGALIA_DEFINITION',
@@ -13,13 +13,13 @@ enum ActionType {
 
 export function addRegalia() {
   return {
-    type: ActionType.AddRegalia as const,
+    type: CalculatorActionType.AddRegalia as const,
   }
 }
 
 export function removeRegalia(id: string) {
   return {
-    type: ActionType.RemoveRegalia as const,
+    type: CalculatorActionType.RemoveRegalia as const,
     payload: { id },
   }
 }
@@ -29,42 +29,42 @@ export function setRegaliaDefinition(
   definition: Regalia.Definition
 ) {
   return {
-    type: ActionType.SetRegaliaDefinition as const,
+    type: CalculatorActionType.SetRegaliaDefinition as const,
     payload: { id, definition },
   }
 }
 
 export function setRegaliaLevel(id: string, level: Regalia.Level) {
   return {
-    type: ActionType.SetRegaliaLevel as const,
+    type: CalculatorActionType.SetRegaliaLevel as const,
     payload: { id, level },
   }
 }
 
 export function setRegaliaRank(id: string, rank: Regalia.Rank) {
   return {
-    type: ActionType.SetRegaliaRank as const,
+    type: CalculatorActionType.SetRegaliaRank as const,
     payload: { id, rank },
   }
 }
 
 export function setRegaliaRarity(id: string, rarity: Regalia.Rarity) {
   return {
-    type: ActionType.SetRegaliaRarity as const,
+    type: CalculatorActionType.SetRegaliaRarity as const,
     payload: { id, rarity },
   }
 }
 
 export function setRegaliaUpgrade(id: string, upgrade: Regalia.Upgrade) {
   return {
-    type: ActionType.SetRegaliaUpgrade as const,
+    type: CalculatorActionType.SetRegaliaUpgrade as const,
     payload: { id, upgrade },
   }
 }
 
 export function setRegalias(regalias: Regalia.Regalia[]) {
   return {
-    type: ActionType.SetRegalias as const,
+    type: CalculatorActionType.SetRegalias as const,
     payload: { regalias },
   }
 }
@@ -88,20 +88,12 @@ export interface CalculatorState {
   }
 }
 
-const regalia = Regalia.createRegalia()
-export const calculatorInitialState: CalculatorState = {
-  regalias: {
-    byId: { [regalia.id]: regalia },
-    allIds: [regalia.id],
-  },
-}
-
-export function calculatorReducer(
-  state = calculatorInitialState,
-  action: CalculatorAction
-): CalculatorState {
+export const calculatorReducer: React.Reducer<
+  CalculatorState,
+  CalculatorAction
+> = (state, action) => {
   switch (action.type) {
-    case ActionType.AddRegalia: {
+    case CalculatorActionType.AddRegalia: {
       const regalia = Regalia.createRegalia()
 
       return {
@@ -117,7 +109,7 @@ export function calculatorReducer(
       }
     }
 
-    case ActionType.RemoveRegalia: {
+    case CalculatorActionType.RemoveRegalia: {
       const { [action.payload.id]: value, ...byIds } = state.regalias.byId
       const allIds = state.regalias.allIds.filter(
         id => id !== action.payload.id
@@ -133,7 +125,7 @@ export function calculatorReducer(
       }
     }
 
-    case ActionType.SetRegaliaDefinition:
+    case CalculatorActionType.SetRegaliaDefinition:
       return {
         ...state,
         regalias: {
@@ -148,7 +140,7 @@ export function calculatorReducer(
         },
       }
 
-    case ActionType.SetRegaliaLevel:
+    case CalculatorActionType.SetRegaliaLevel:
       return {
         ...state,
         regalias: {
@@ -163,7 +155,7 @@ export function calculatorReducer(
         },
       }
 
-    case ActionType.SetRegaliaRank:
+    case CalculatorActionType.SetRegaliaRank:
       return {
         ...state,
         regalias: {
@@ -178,7 +170,7 @@ export function calculatorReducer(
         },
       }
 
-    case ActionType.SetRegaliaRarity:
+    case CalculatorActionType.SetRegaliaRarity:
       return {
         ...state,
         regalias: {
@@ -193,7 +185,7 @@ export function calculatorReducer(
         },
       }
 
-    case ActionType.SetRegaliaUpgrade:
+    case CalculatorActionType.SetRegaliaUpgrade:
       return {
         ...state,
         regalias: {
@@ -208,7 +200,7 @@ export function calculatorReducer(
         },
       }
 
-    case ActionType.SetRegalias: {
+    case CalculatorActionType.SetRegalias: {
       const regalias = action.payload.regalias
 
       return {
