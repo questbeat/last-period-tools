@@ -52,7 +52,7 @@ export const About: React.FC = () => {
           プログラミングの練習を目的として作ったものなので、実用性はあまりないかもしれません。
         </Paragraph>
         <Paragraph>
-          このアプリは TypeScript + React + Redux で開発し、Netlify
+          このアプリは TypeScript + React で開発し、Netlify
           にデプロイしています。
           <br />
           <Link
