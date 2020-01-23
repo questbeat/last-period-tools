@@ -1,6 +1,6 @@
 import React from 'react'
-import * as Regalia from '../regalia'
-import { ChartAction, ChartState, chartReducer } from '../modules/chart'
+import * as Regalia from '../../regalia'
+import { ChartAction, ChartState, chartReducer } from '../../modules/chart'
 
 const initialState: ChartState = {
   definition: Regalia.definitions[0],

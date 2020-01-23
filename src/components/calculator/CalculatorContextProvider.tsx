@@ -1,10 +1,10 @@
 import React from 'react'
-import * as Regalia from '../regalia'
+import * as Regalia from '../../regalia'
 import {
   CalculatorAction,
   CalculatorState,
   calculatorReducer,
-} from '../modules/calculator'
+} from '../../modules/calculator'
 
 const regalia = Regalia.createRegalia()
 export const initialState: CalculatorState = {
