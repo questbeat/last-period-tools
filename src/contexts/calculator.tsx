@@ -1,10 +1,18 @@
 import React from 'react'
+import * as Regalia from '../regalia'
 import {
   CalculatorAction,
   CalculatorState,
-  calculatorInitialState,
   calculatorReducer,
 } from '../modules/calculator'
+
+const regalia = Regalia.createRegalia()
+export const initialState: CalculatorState = {
+  regalias: {
+    byId: { [regalia.id]: regalia },
+    allIds: [regalia.id],
+  },
+}
 
 interface CalculatorContextProps {
   dispatch: React.Dispatch<CalculatorAction>
@@ -13,14 +21,11 @@ interface CalculatorContextProps {
 
 export const CalculatorContext = React.createContext<CalculatorContextProps>({
   dispatch: () => {},
-  state: calculatorInitialState,
+  state: initialState,
 })
 
 export const CalculatorContextProvider: React.FC = ({ children }) => {
-  const [state, dispatch] = React.useReducer(
-    calculatorReducer,
-    calculatorInitialState
-  )
+  const [state, dispatch] = React.useReducer(calculatorReducer, initialState)
 
   return (
     <CalculatorContext.Provider value={{ dispatch, state }}>

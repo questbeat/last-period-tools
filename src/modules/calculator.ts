@@ -88,14 +88,6 @@ export interface CalculatorState {
   }
 }
 
-const regalia = Regalia.createRegalia()
-export const calculatorInitialState: CalculatorState = {
-  regalias: {
-    byId: { [regalia.id]: regalia },
-    allIds: [regalia.id],
-  },
-}
-
 export const calculatorReducer: React.Reducer<
   CalculatorState,
   CalculatorAction

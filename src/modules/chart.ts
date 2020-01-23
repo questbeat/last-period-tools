@@ -29,11 +29,6 @@ export interface ChartState {
   rank: Regalia.Rank
 }
 
-export const chartInitialState: ChartState = {
-  definition: Regalia.definitions[0],
-  rank: 'C',
-}
-
 export const chartReducer: React.Reducer<ChartState, ChartAction> = (
   state,
   action
