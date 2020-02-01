@@ -36,24 +36,28 @@ interface CalculatorToolbarProps {
   regalias: Regalia.Regalia[]
   onAdd: () => void
   onImport: (regalias: Regalia.Regalia[]) => void
+  onShare: () => void
 }
 
 export const CalculatorToolbar: React.FC<CalculatorToolbarProps> = ({
   regalias,
   onAdd,
   onImport,
+  onShare,
 }) => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const classes = useStyles()
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const inputEl = useRef<HTMLInputElement>(null)
+
+  const closeMenu = useCallback(() => setAnchorEl(null), [setAnchorEl])
+
+  const handleAdd = useCallback(() => onAdd(), [onAdd])
 
   const handleMenuOpen = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) =>
       setAnchorEl(event.currentTarget),
     [setAnchorEl]
   )
-
-  const handleMenuClose = useCallback(() => setAnchorEl(null), [setAnchorEl])
 
   const handleExport = useCallback(() => {
     const data = { regalias }
@@ -64,16 +68,16 @@ export const CalculatorToolbar: React.FC<CalculatorToolbarProps> = ({
     elm.href = window.URL.createObjectURL(blob)
     elm.click()
 
-    setAnchorEl(null)
-  }, [regalias])
+    closeMenu()
+  }, [closeMenu, regalias])
 
   const handleImportClick = useCallback(() => {
     if (inputEl && inputEl.current) {
       inputEl.current.click()
     }
 
-    setAnchorEl(null)
-  }, [inputEl, setAnchorEl])
+    closeMenu()
+  }, [closeMenu])
 
   const handleImportChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -90,13 +94,18 @@ export const CalculatorToolbar: React.FC<CalculatorToolbarProps> = ({
     [onImport]
   )
 
+  const handleShare = useCallback(() => {
+    onShare()
+    closeMenu()
+  }, [closeMenu, onShare])
+
   const addButton = useMemo(
     () => (
-      <IconButton onClick={onAdd}>
+      <IconButton onClick={handleAdd}>
         <AddIcon />
       </IconButton>
     ),
-    [onAdd]
+    [handleAdd]
   )
 
   const menuButton = useMemo(
@@ -120,11 +129,12 @@ export const CalculatorToolbar: React.FC<CalculatorToolbarProps> = ({
         <Menu
           anchorEl={anchorEl}
           keepMounted
-          onClose={handleMenuClose}
+          onClose={closeMenu}
           open={anchorEl !== null}
         >
           <MenuItem onClick={handleExport}>エクスポート</MenuItem>
           <MenuItem onClick={handleImportClick}>インポート</MenuItem>
+          <MenuItem onClick={handleShare}>計算結果を共有</MenuItem>
         </Menu>
         <input type="file" onChange={handleImportChange} ref={inputEl} hidden />
       </div>
