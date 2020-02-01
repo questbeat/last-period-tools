@@ -12,7 +12,6 @@ import {
   CalculatorContextProvider,
 } from './CalculatorContextProvider'
 import { addRegalia, setRegalias } from '../../modules/calculator'
-import * as Regalia from '../../regalia'
 import { CalculatorTable } from './CalculatorTable'
 import { CalculatorToolbar } from './CalculatorToolbar'
 import { RouteComponentProps, withRouter } from 'react-router-dom'
@@ -55,12 +54,6 @@ const InnerCalculator: React.FC<RouteComponentProps> = ({ location }) => {
     []
   )
 
-  const handleImport = useCallback(
-    (regalias: Regalia.Regalia[]) =>
-      dispatch && dispatch(setRegalias(regalias)),
-    [dispatch]
-  )
-
   const handleShare = useCallback(() => {
     const code = encodeRegalias(allRegalias)
     const currentUrl = new URL(window.location.href)
@@ -84,12 +77,7 @@ const InnerCalculator: React.FC<RouteComponentProps> = ({ location }) => {
 
   return (
     <Paper className={classes.paper}>
-      <CalculatorToolbar
-        regalias={allRegalias}
-        onAdd={handleAdd}
-        onImport={handleImport}
-        onShare={handleShare}
-      />
+      <CalculatorToolbar onAdd={handleAdd} onShare={handleShare} />
       <CalculatorTable regalias={allRegalias} />
       <Notification
         message={'共有URLをクリップボードにコピーしました'}

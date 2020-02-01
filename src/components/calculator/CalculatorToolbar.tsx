@@ -8,8 +8,7 @@ import {
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
 import AddIcon from '@material-ui/icons/Add'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
-import React, { useCallback, useMemo, useRef, useState } from 'react'
-import * as Regalia from '../../regalia'
+import React, { useCallback, useMemo, useState } from 'react'
 
 const useStyles = makeStyles<Theme>(theme =>
   createStyles({
@@ -33,65 +32,23 @@ const useStyles = makeStyles<Theme>(theme =>
 )
 
 interface CalculatorToolbarProps {
-  regalias: Regalia.Regalia[]
   onAdd: () => void
-  onImport: (regalias: Regalia.Regalia[]) => void
   onShare: () => void
 }
 
 export const CalculatorToolbar: React.FC<CalculatorToolbarProps> = ({
-  regalias,
   onAdd,
-  onImport,
   onShare,
 }) => {
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-  const inputEl = useRef<HTMLInputElement>(null)
-
   const closeMenu = useCallback(() => setAnchorEl(null), [setAnchorEl])
-
   const handleAdd = useCallback(() => onAdd(), [onAdd])
 
   const handleMenuOpen = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) =>
       setAnchorEl(event.currentTarget),
     [setAnchorEl]
-  )
-
-  const handleExport = useCallback(() => {
-    const data = { regalias }
-    const blob = new Blob([JSON.stringify(data)], { type: 'application/json' })
-
-    const elm = document.createElement('a')
-    elm.download = 'regalia-calc.json'
-    elm.href = window.URL.createObjectURL(blob)
-    elm.click()
-
-    closeMenu()
-  }, [closeMenu, regalias])
-
-  const handleImportClick = useCallback(() => {
-    if (inputEl && inputEl.current) {
-      inputEl.current.click()
-    }
-
-    closeMenu()
-  }, [closeMenu])
-
-  const handleImportChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      const files = event.target.files
-      if (files && files[0]) {
-        const reader = new FileReader()
-        reader.onloadend = () => {
-          const data = JSON.parse(reader.result as string)
-          onImport(data.regalias)
-        }
-        reader.readAsText(files[0])
-      }
-    },
-    [onImport]
   )
 
   const handleShare = useCallback(() => {
@@ -132,11 +89,8 @@ export const CalculatorToolbar: React.FC<CalculatorToolbarProps> = ({
           onClose={closeMenu}
           open={anchorEl !== null}
         >
-          <MenuItem onClick={handleExport}>エクスポート</MenuItem>
-          <MenuItem onClick={handleImportClick}>インポート</MenuItem>
           <MenuItem onClick={handleShare}>計算結果を共有</MenuItem>
         </Menu>
-        <input type="file" onChange={handleImportChange} ref={inputEl} hidden />
       </div>
     </Toolbar>
   )
