@@ -3,13 +3,13 @@ import shortid from 'shortid'
 import * as msgpack from '@msgpack/msgpack'
 import * as Regalia from '../regalia'
 
-interface Parameters {
-  name: string
-  level: Regalia.Level
-  rank: Regalia.Rank
-  rarity: Regalia.Rarity
-  upgrade: Regalia.Upgrade
-}
+type Parameters = [
+  string,
+  Regalia.Level,
+  Regalia.Rank,
+  Regalia.Rarity,
+  Regalia.Upgrade
+]
 
 const addBase64Padding = (code: string): string =>
   code.length % 4 === 0 ? code : code + '='.repeat(4 - (code.length % 4))
@@ -21,24 +21,18 @@ const makeUrlSafeBase64 = (code: string): string =>
     .replace(/=+$/, '')
 
 const parametersFromRegalias = (regalias: Regalia.Regalia[]): Parameters[] =>
-  regalias.map(regalia => ({
-    name: regalia.definition.name,
-    level: regalia.level,
-    rank: regalia.rank,
-    rarity: regalia.rarity,
-    upgrade: regalia.upgrade,
-  }))
+  regalias.map(r => [r.definition.name, r.level, r.rank, r.rarity, r.upgrade])
 
 const regaliasFromParameters = (paramsArray: Parameters[]): Regalia.Regalia[] =>
   paramsArray.map(params => {
-    const definition = Regalia.definitionsByName[params.name]
+    const [name, level, rank, rarity, upgrade] = params
     return {
       id: shortid.generate(),
-      definition,
-      level: params.level,
-      rank: params.rank,
-      rarity: params.rarity,
-      upgrade: params.upgrade,
+      definition: Regalia.definitionsByName[name],
+      level: level,
+      rank: rank,
+      rarity: rarity,
+      upgrade: upgrade,
     }
   })
 
