@@ -1,16 +1,10 @@
 import { Paper } from '@material-ui/core'
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import {
-  CalculatorContext,
-  CalculatorContextProvider,
-} from './CalculatorContextProvider'
+  useCalculatorContext,
+  withCalculatorContext,
+} from './CalculatorContext'
 import { addRegalia, setRegalias } from '../../modules/calculator'
 import { CalculatorTable } from './CalculatorTable'
 import { CalculatorToolbar } from './CalculatorToolbar'
@@ -38,7 +32,7 @@ const useStyles = makeStyles<Theme>(theme =>
 
 const InnerCalculator: React.FC<RouteComponentProps> = ({ location }) => {
   const classes = useStyles()
-  const { dispatch, state } = useContext(CalculatorContext)
+  const { dispatch, state } = useCalculatorContext()
   const regalias = state.regalias
 
   const allRegalias = useMemo(
@@ -89,10 +83,4 @@ const InnerCalculator: React.FC<RouteComponentProps> = ({ location }) => {
   )
 }
 
-const CalculatorWithContext: React.FC<RouteComponentProps> = props => (
-  <CalculatorContextProvider>
-    <InnerCalculator {...props} />
-  </CalculatorContextProvider>
-)
-
-export const Calculator = withRouter(CalculatorWithContext)
+export const Calculator = withRouter(withCalculatorContext(InnerCalculator))

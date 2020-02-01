@@ -9,8 +9,8 @@ import {
 } from '@material-ui/core'
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
 import DeleteIcon from '@material-ui/icons/Delete'
-import React, { useCallback, useContext, useMemo } from 'react'
-import { CalculatorContext } from './CalculatorContextProvider'
+import React, { useCallback, useMemo } from 'react'
+import { useCalculatorContext } from './CalculatorContext'
 import {
   removeRegalia,
   setRegaliaDefinition,
@@ -71,7 +71,7 @@ export const CalculatorTableRow: React.FC<CalculatorTableRowProps> = ({
   regalia,
 }) => {
   const classes = useStyles()
-  const { dispatch } = useContext(CalculatorContext)
+  const { dispatch } = useCalculatorContext()
 
   const handleTypeChange = useCallback(
     (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
