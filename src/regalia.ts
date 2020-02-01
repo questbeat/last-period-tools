@@ -64,6 +64,10 @@ definitions.sort((a, b) => {
 })
 export { definitions }
 
+export const definitionsByName = Object.fromEntries(
+  definitions.map(d => [d.name, d])
+)
+
 export function floor(num: number, digits: number): number {
   const base = Math.pow(10, digits)
   return Math.floor(num * base) / base
