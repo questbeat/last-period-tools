@@ -12,8 +12,12 @@ interface Mappings {
 }
 
 const book = xlsx.readFile('data/regalia.xlsx')
-const definitions: Regalia.Definition[] = JSON.parse(fs.readFileSync('src/definitions.json').toString())
-const mappings: Mappings = yaml.safeLoad(fs.readFileSync('data/mappings.yml').toString())
+const definitions: Regalia.Definition[] = JSON.parse(
+  fs.readFileSync('src/definitions.json').toString()
+)
+const mappings: Mappings = yaml.safeLoad(
+  fs.readFileSync('data/mappings.yml').toString()
+)
 
 Object.entries(mappings).forEach(([regaliaName, abilities]) => {
   const definition = definitions.find(d => d.name === regaliaName)
@@ -28,7 +32,7 @@ Object.entries(mappings).forEach(([regaliaName, abilities]) => {
 
     Regalia.ranks.forEach((rank, rankIndex) => {
       Regalia.rarities.forEach((rarity, rarityIndex) => {
-        const upgrades = (rarity < 4) ? [rarity - 1] : [3, 4, 5, 6, 7, 8, 9, 10]
+        const upgrades = rarity < 4 ? [rarity - 1] : [3, 4, 5, 6, 7, 8, 9, 10]
         upgrades.forEach((upgrade, upgradeIndex) => {
           Regalia.levels.forEach((level, levelIndex) => {
             const row = 3 + 11 * rankIndex + rarityIndex + upgradeIndex
@@ -36,14 +40,19 @@ Object.entries(mappings).forEach(([regaliaName, abilities]) => {
             const value = sheet[xlsx.utils.encode_cell({ r: row, c: col })].v
 
             const result = Regalia.computeValue({
-              ability, level, rank, rarity,
+              ability,
+              level,
+              rank,
+              rarity,
               upgrade: upgrade as Regalia.Upgrade,
             })
             const expectedValue = Regalia.floor(value, ability.digits)
             const actualValue = Regalia.floor(result.value, ability.digits)
 
             if (actualValue !== expectedValue) {
-              console.log(`${regaliaName} ${abilityName} ${rank} +${rarity} Lv.${level}:  ${expectedValue} / ${actualValue}`)
+              console.log(
+                `${regaliaName} ${abilityName} ${rank} +${rarity} Lv.${level}:  ${expectedValue} / ${actualValue}`
+              )
             }
           })
         })
