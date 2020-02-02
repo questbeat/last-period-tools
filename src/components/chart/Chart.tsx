@@ -1,7 +1,7 @@
 import { Box, Paper, Typography } from '@material-ui/core'
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
-import React, { useCallback, useContext } from 'react'
-import { ChartContext, ChartContextProvider } from './ChartContextProvider'
+import React, { useCallback } from 'react'
+import { useChartContext, withChartContext } from './ChartContext'
 import { setDefinition, setRank } from '../../modules/chart'
 import * as Regalia from '../../regalia'
 import { ChartTable } from './ChartTable'
@@ -23,7 +23,7 @@ const useStyles = makeStyles<Theme>(theme =>
 
 const InnerChart: React.FC = () => {
   const classes = useStyles()
-  const { dispatch, state } = useContext(ChartContext)
+  const { dispatch, state } = useChartContext()
   const { definition, rank } = state
 
   const handleDefinitionChange = useCallback(
@@ -63,10 +63,4 @@ const InnerChart: React.FC = () => {
   )
 }
 
-export const Chart: React.FC = () => {
-  return (
-    <ChartContextProvider>
-      <InnerChart />
-    </ChartContextProvider>
-  )
-}
+export const Chart = withChartContext(InnerChart)
