@@ -76,10 +76,8 @@ export const CalculatorTableRow: React.FC<CalculatorTableRowProps> = ({
   const handleTypeChange = useCallback(
     (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
       const name = event.target.value as string
-      const definition = Regalia.definitions.find(d => d.name === name)
-      if (definition) {
-        dispatch(setRegaliaDefinition(regalia.id, definition))
-      }
+      const definition = Regalia.definitionsByName[name]
+      if (definition) dispatch(setRegaliaDefinition(regalia.id, definition))
     },
     [dispatch, regalia.id]
   )
