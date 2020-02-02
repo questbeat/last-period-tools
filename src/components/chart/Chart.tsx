@@ -27,13 +27,12 @@ const InnerChart: React.FC = () => {
   const { definition, rank } = state
 
   const handleDefinitionChange = useCallback(
-    (definition: Regalia.Definition) =>
-      dispatch && dispatch(setDefinition(definition)),
+    (definition: Regalia.Definition) => dispatch(setDefinition(definition)),
     [dispatch]
   )
 
   const handleRankChange = useCallback(
-    (rank: Regalia.Rank) => dispatch && dispatch(setRank(rank)),
+    (rank: Regalia.Rank) => dispatch(setRank(rank)),
     [dispatch]
   )
 
