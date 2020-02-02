@@ -49,7 +49,7 @@ export const ChartToolbar: React.FC<ChartToolbarProps> = ({
   const handleDefinitionChange = useCallback(
     (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
       const name = event.target.value as string
-      const definition = Regalia.definitions.find(d => d.name === name)
+      const definition = Regalia.definitionsByName[name]
       if (definition) onDefinitionChange(definition)
     },
     [onDefinitionChange]

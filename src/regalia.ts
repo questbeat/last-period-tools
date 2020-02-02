@@ -64,9 +64,9 @@ definitions.sort((a, b) => {
 })
 export { definitions }
 
-export const definitionsByName = Object.fromEntries(
-  definitions.map(d => [d.name, d])
-)
+export const definitionsByName: {
+  [key: string]: Definition
+} = Object.fromEntries(definitions.map(d => [d.name, d]))
 
 export function floor(num: number, digits: number): number {
   const base = Math.pow(10, digits)

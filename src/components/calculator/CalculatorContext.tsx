@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from 'react'
+import React, { createContext, useContext, useReducer } from 'react'
 import * as Regalia from '../../regalia'
 import {
   CalculatorAction,
@@ -19,17 +19,20 @@ interface CalculatorContextProps {
   state: CalculatorState
 }
 
-export const CalculatorContext = createContext<CalculatorContextProps>({
+const CalculatorContext = createContext<CalculatorContextProps>({
   dispatch: () => {},
   state: initialState,
 })
 
-export const CalculatorContextProvider: React.FC = ({ children }) => {
-  const [state, dispatch] = useReducer(calculatorReducer, initialState)
+export const useCalculatorContext = () => useContext(CalculatorContext)
 
+export const withCalculatorContext = <T extends {}>(
+  Component: React.ComponentType<T>
+): React.ComponentType<T> => props => {
+  const [state, dispatch] = useReducer(calculatorReducer, initialState)
   return (
     <CalculatorContext.Provider value={{ dispatch, state }}>
-      {children}
+      <Component {...props} />
     </CalculatorContext.Provider>
   )
 }

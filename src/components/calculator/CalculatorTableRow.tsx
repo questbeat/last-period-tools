@@ -9,8 +9,8 @@ import {
 } from '@material-ui/core'
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
 import DeleteIcon from '@material-ui/icons/Delete'
-import React, { useCallback, useContext, useMemo } from 'react'
-import { CalculatorContext } from './CalculatorContextProvider'
+import React, { useCallback, useMemo } from 'react'
+import { useCalculatorContext } from './CalculatorContext'
 import {
   removeRegalia,
   setRegaliaDefinition,
@@ -71,65 +71,51 @@ export const CalculatorTableRow: React.FC<CalculatorTableRowProps> = ({
   regalia,
 }) => {
   const classes = useStyles()
-  const { dispatch } = useContext(CalculatorContext)
+  const { dispatch } = useCalculatorContext()
 
   const handleTypeChange = useCallback(
     (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
       const name = event.target.value as string
-      const definition = Regalia.definitions.find(d => d.name === name)
-      if (dispatch && definition) {
-        dispatch(setRegaliaDefinition(regalia.id, definition))
-      }
+      const definition = Regalia.definitionsByName[name]
+      if (definition) dispatch(setRegaliaDefinition(regalia.id, definition))
     },
     [dispatch, regalia.id]
   )
 
   const handleRankChange = useCallback(
-    (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
-      if (dispatch) {
-        dispatch(setRegaliaRank(regalia.id, event.target.value as Regalia.Rank))
-      }
-    },
+    (event: React.ChangeEvent<{ name?: string; value: unknown }>) =>
+      dispatch(setRegaliaRank(regalia.id, event.target.value as Regalia.Rank)),
     [dispatch, regalia.id]
   )
 
   const handleRarityChange = useCallback(
-    (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
-      if (dispatch) {
-        dispatch(
-          setRegaliaRarity(regalia.id, event.target.value as Regalia.Rarity)
-        )
-      }
-    },
+    (event: React.ChangeEvent<{ name?: string; value: unknown }>) =>
+      dispatch(
+        setRegaliaRarity(regalia.id, event.target.value as Regalia.Rarity)
+      ),
     [dispatch, regalia.id]
   )
 
   const handleUpgradeChange = useCallback(
-    (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
-      if (dispatch) {
-        dispatch(
-          setRegaliaUpgrade(regalia.id, event.target.value as Regalia.Upgrade)
-        )
-      }
-    },
+    (event: React.ChangeEvent<{ name?: string; value: unknown }>) =>
+      dispatch(
+        setRegaliaUpgrade(regalia.id, event.target.value as Regalia.Upgrade)
+      ),
     [dispatch, regalia.id]
   )
 
   const handleLevelChange = useCallback(
-    (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
-      if (dispatch) {
-        dispatch(
-          setRegaliaLevel(regalia.id, event.target.value as Regalia.Level)
-        )
-      }
-    },
+    (event: React.ChangeEvent<{ name?: string; value: unknown }>) =>
+      dispatch(
+        setRegaliaLevel(regalia.id, event.target.value as Regalia.Level)
+      ),
     [dispatch, regalia.id]
   )
 
-  const handleDelete = useCallback(
-    () => dispatch && dispatch(removeRegalia(regalia.id)),
-    [dispatch, regalia.id]
-  )
+  const handleDelete = useCallback(() => dispatch(removeRegalia(regalia.id)), [
+    dispatch,
+    regalia.id,
+  ])
 
   const typeCell = useMemo(
     () => (
