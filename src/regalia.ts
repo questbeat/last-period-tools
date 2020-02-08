@@ -1,5 +1,6 @@
 import BigNumber from 'bignumber.js'
 import shortid from 'shortid'
+import _definitions from './definitions.json'
 
 export type Level = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
 export type Rank = 'A' | 'B' | 'C' | 'S'
@@ -51,18 +52,11 @@ export const rankValues: { [key in Rank]: number } = {
   S: 1.4,
 }
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const definitions: Definition[] = require('./definitions.json')
-definitions.sort((a, b) => {
-  if (a.name < b.name) {
-    return -1
-  }
-  if (a.name > b.name) {
-    return 1
-  }
+export const definitions = Array.from(_definitions).sort((a, b) => {
+  if (a.name < b.name) return -1
+  if (a.name > b.name) return 1
   return 0
-})
-export { definitions }
+}) as Definition[]
 
 export const definitionsByName: {
   [key: string]: Definition
