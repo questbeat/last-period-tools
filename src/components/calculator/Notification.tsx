@@ -22,7 +22,12 @@ export const Notification: React.FC<CopySnackbarProps> = ({
   const handleClose = useCallback(() => onClose(), [onClose])
 
   return (
-    <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+    <Snackbar
+      open={open}
+      autoHideDuration={6000}
+      onClose={handleClose}
+      anchorOrigin={{ horizontal: 'center', vertical: 'top' }}
+    >
       <Alert onClose={handleClose} severity={severity}>
         {message}
       </Alert>
