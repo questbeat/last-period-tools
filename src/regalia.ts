@@ -2,10 +2,15 @@ import BigNumber from 'bignumber.js'
 import shortid from 'shortid'
 import _definitions from './definitions.json'
 
-export type Level = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
-export type Rank = 'A' | 'B' | 'C' | 'S'
-export type Rarity = 1 | 2 | 3 | 4
-export type Upgrade = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
+export const levels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] as const
+export const ranks = ['C', 'B', 'A', 'S'] as const
+export const rarities = [1, 2, 3, 4] as const
+export const upgrades = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] as const
+
+export type Level = typeof levels[number]
+export type Rank = typeof ranks[number]
+export type Rarity = typeof rarities[number]
+export type Upgrade = typeof upgrades[number]
 
 export interface BaseValue {
   min: number
@@ -39,11 +44,6 @@ export interface Regalia {
   rarity: Rarity
   upgrade: Upgrade
 }
-
-export const levels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] as const
-export const ranks = ['C', 'B', 'A', 'S'] as const
-export const rarities = [1, 2, 3, 4] as const
-export const upgrades = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] as const
 
 export const rankValues: { [key in Rank]: number } = {
   C: 1.0,
