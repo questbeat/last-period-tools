@@ -2,7 +2,7 @@
 
 iOS/Android 向けゲーム「[ラストピリオド -終わりなき螺旋の物語-](http://lastperiod.happyelements.co.jp/)」向けのツール集です。
 
-https://last-period.netlify.com/
+https://last-period.netlify.app/
 
 
 ## Requirements
