@@ -15,16 +15,13 @@ const addBase64Padding = (code: string): string =>
   code.length % 4 === 0 ? code : code + '='.repeat(4 - (code.length % 4))
 
 const makeUrlSafeBase64 = (code: string): string =>
-  code
-    .replace(/\+/g, '-')
-    .replace(/\//g, '_')
-    .replace(/=+$/, '')
+  code.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
 
 const parametersFromRegalias = (regalias: Regalia.Regalia[]): Parameters[] =>
-  regalias.map(r => [r.definition.name, r.level, r.rank, r.rarity, r.upgrade])
+  regalias.map((r) => [r.definition.name, r.level, r.rank, r.rarity, r.upgrade])
 
 const regaliasFromParameters = (paramsArray: Parameters[]): Regalia.Regalia[] =>
-  paramsArray.map(params => {
+  paramsArray.map((params) => {
     const [name, level, rank, rarity, upgrade] = params
     return {
       id: shortid.generate(),

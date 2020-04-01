@@ -239,7 +239,7 @@ export const CalculatorTableRow: React.FC<CalculatorTableRowProps> = ({
 
   const displayValueCell = useMemo(() => {
     const values = Regalia.computeValues(regalia)
-    const displayValues = values.map(value => Regalia.getDisplayValue(value))
+    const displayValues = values.map((value) => Regalia.getDisplayValue(value))
 
     return (
       <TableCell className={classes.cell}>

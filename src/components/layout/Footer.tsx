@@ -3,7 +3,7 @@ import grey from '@material-ui/core/colors/grey'
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
 import React from 'react'
 
-const useStyles = makeStyles<Theme>(theme =>
+const useStyles = makeStyles<Theme>((theme) =>
   createStyles({
     footer: {
       backgroundColor: grey[50],

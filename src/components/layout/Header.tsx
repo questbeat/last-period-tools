@@ -10,7 +10,7 @@ import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
 import MenuIcon from '@material-ui/icons/Menu'
 import { Menu } from './Menu'
 
-const useStyles = makeStyles<Theme>(theme =>
+const useStyles = makeStyles<Theme>((theme) =>
   createStyles({
     header: {
       flexGrow: 0,

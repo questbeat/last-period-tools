@@ -21,7 +21,7 @@ export const useChartContext = () => useContext(ChartContext)
 
 export const withChartContext = <T extends {}>(
   Component: React.ComponentType<T>
-): React.ComponentType<T> => props => {
+): React.ComponentType<T> => (props) => {
   const [state, dispatch] = useReducer(chartReducer, initialState)
   return (
     <ChartContext.Provider value={{ dispatch, state }}>

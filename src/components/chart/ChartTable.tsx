@@ -29,9 +29,9 @@ export const ChartTable: React.FC<ChartTableProps> = ({ ability, rank }) => {
   const classes = useStyles()
 
   const rows: React.ReactElement[] = []
-  Regalia.rarities.forEach(rarity => {
+  Regalia.rarities.forEach((rarity) => {
     const upgrades = rarity < 4 ? [rarity - 1] : [3, 4, 5, 6, 7, 8, 9, 10]
-    upgrades.forEach(upgrade => {
+    upgrades.forEach((upgrade) => {
       let cells = [
         <TableCell key={0} align="center" className={classes.cell}>
           {rarity}

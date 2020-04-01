@@ -2,7 +2,7 @@ import { Box, Link, Typography } from '@material-ui/core'
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
 import React from 'react'
 
-const useStyles = makeStyles<Theme>(theme =>
+const useStyles = makeStyles<Theme>((theme) =>
   createStyles({
     about: {
       paddingTop: theme.spacing(2),

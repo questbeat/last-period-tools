@@ -23,11 +23,11 @@ const definitions: Regalia.Definition[] = Object.entries(mappings).map(
       abilities: [],
     }
 
-    abilities.forEach(ability => {
+    abilities.forEach((ability) => {
       const { sheet: sheetName, ability: abilityName, type } = ability
       const sheet = book.Sheets[sheetName]
       const digits = type === 'value' ? 0 : 1
-      const baseValues: Regalia.BaseValue[] = [3, 4, 5, 6].map(row => ({
+      const baseValues: Regalia.BaseValue[] = [3, 4, 5, 6].map((row) => ({
         min: sheet[xlsx.utils.encode_cell({ r: row, c: 17 })].v,
         max: sheet[xlsx.utils.encode_cell({ r: row, c: 26 })].v,
       }))

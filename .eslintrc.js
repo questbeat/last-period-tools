@@ -16,7 +16,6 @@ module.exports = {
       {
         semi: false,
         singleQuote: true,
-        trailingComma: 'es5',
       }
     ],
     'sort-imports': ['warn', { ignoreDeclarationSort: true }],

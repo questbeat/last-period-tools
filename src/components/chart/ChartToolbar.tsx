@@ -9,7 +9,7 @@ import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
 import React, { useCallback } from 'react'
 import * as Regalia from '../../regalia'
 
-const useStyles = makeStyles<Theme>(theme =>
+const useStyles = makeStyles<Theme>((theme) =>
   createStyles({
     definitionSelector: {
       marginRight: theme.spacing(2),

@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import { Snackbar } from '@material-ui/core'
 import MuiAlert, { AlertProps, Color } from '@material-ui/lab/Alert'
 
-const Alert: React.FC<AlertProps> = props => (
+const Alert: React.FC<AlertProps> = (props) => (
   <MuiAlert elevation={6} variant="filled" {...props} />
 )
 

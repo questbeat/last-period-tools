@@ -14,7 +14,7 @@ import { decodeRegalias, encodeRegalias } from '../../utils/serialization'
 import copyToClipboard from 'clipboard-copy'
 import { Notification } from './Notification'
 
-const useStyles = makeStyles<Theme>(theme =>
+const useStyles = makeStyles<Theme>((theme) =>
   createStyles({
     cell: {
       padding: '6px 16px 6px 16px',
@@ -36,7 +36,7 @@ const InnerCalculator: React.FC<RouteComponentProps> = ({ location }) => {
   const regalias = state.regalias
 
   const allRegalias = useMemo(
-    () => regalias.allIds.map(id => regalias.byId[id]),
+    () => regalias.allIds.map((id) => regalias.byId[id]),
     [regalias]
   )
 

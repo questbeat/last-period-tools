@@ -60,7 +60,7 @@ export const definitions = Array.from(_definitions).sort((a, b) => {
 
 export const definitionsByName: {
   [key: string]: Definition
-} = Object.fromEntries(definitions.map(d => [d.name, d]))
+} = Object.fromEntries(definitions.map((d) => [d.name, d]))
 
 export function floor(num: number, digits: number): number {
   const base = Math.pow(10, digits)
@@ -94,12 +94,7 @@ export function computeValue(props: {
   const level = new BigNumber(props.level)
 
   const value = min // 基礎能力値
-    .plus(
-      max
-        .minus(min)
-        .times(level.minus(one))
-        .dividedBy(nine)
-    ) // レベル補正値
+    .plus(max.minus(min).times(level.minus(one)).dividedBy(nine)) // レベル補正値
     .times(rank) // ランク補正値
     .times(one.plus(bonus.times(upgrade))) // 進化補正値
 
@@ -117,7 +112,7 @@ export function computeValues(props: {
   upgrade: Upgrade
 }): Value[] {
   const { definition, ...statuses } = props
-  return props.definition.abilities.map(ability =>
+  return props.definition.abilities.map((ability) =>
     computeValue({
       ability,
       ...statuses,

@@ -10,7 +10,7 @@ import AddIcon from '@material-ui/icons/Add'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import React, { useCallback, useMemo, useState } from 'react'
 
-const useStyles = makeStyles<Theme>(theme =>
+const useStyles = makeStyles<Theme>((theme) =>
   createStyles({
     actions: {
       flex: '0 0 auto',

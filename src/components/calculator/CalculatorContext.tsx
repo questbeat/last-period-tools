@@ -28,7 +28,7 @@ export const useCalculatorContext = () => useContext(CalculatorContext)
 
 export const withCalculatorContext = <T extends {}>(
   Component: React.ComponentType<T>
-): React.ComponentType<T> => props => {
+): React.ComponentType<T> => (props) => {
   const [state, dispatch] = useReducer(calculatorReducer, initialState)
   return (
     <CalculatorContext.Provider value={{ dispatch, state }}>

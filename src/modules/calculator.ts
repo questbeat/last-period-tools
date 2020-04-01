@@ -112,7 +112,7 @@ export const calculatorReducer: React.Reducer<
     case CalculatorActionType.RemoveRegalia: {
       const { [action.payload.id]: value, ...byIds } = state.regalias.byId
       const allIds = state.regalias.allIds.filter(
-        id => id !== action.payload.id
+        (id) => id !== action.payload.id
       )
 
       return {
@@ -207,8 +207,8 @@ export const calculatorReducer: React.Reducer<
         ...state,
         regalias: {
           ...state.regalias,
-          byId: Object.assign({}, ...regalias.map(r => ({ [r.id]: r }))),
-          allIds: regalias.map(r => r.id),
+          byId: Object.assign({}, ...regalias.map((r) => ({ [r.id]: r }))),
+          allIds: regalias.map((r) => r.id),
         },
       }
     }

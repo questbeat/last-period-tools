@@ -20,12 +20,12 @@ const mappings: Mappings = yaml.safeLoad(
 )
 
 Object.entries(mappings).forEach(([regaliaName, abilities]) => {
-  const definition = definitions.find(d => d.name === regaliaName)
+  const definition = definitions.find((d) => d.name === regaliaName)
   if (!definition) return
 
-  abilities.forEach(abilityData => {
+  abilities.forEach((abilityData) => {
     const { sheet: sheetName, ability: abilityName } = abilityData
-    const ability = definition.abilities.find(a => a.name === abilityName)
+    const ability = definition.abilities.find((a) => a.name === abilityName)
     if (!ability) return
 
     const sheet = book.Sheets[sheetName]

@@ -6,7 +6,7 @@ import { About } from '../static/About'
 import { Calculator } from '../calculator/Calculator'
 import { Chart } from '../chart/Chart'
 
-const useStyles = makeStyles<Theme>(theme =>
+const useStyles = makeStyles<Theme>((theme) =>
   createStyles({
     main: {
       flexGrow: 1,
