@@ -2,7 +2,7 @@ import React from 'react'
 import { Container } from '@material-ui/core'
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
 import { Route, Switch } from 'react-router-dom'
-import { About } from '../static/About'
+import { About } from '../about/About'
 import { Calculator } from '../calculator/Calculator'
 import { Chart } from '../chart/Chart'
 

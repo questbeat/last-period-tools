@@ -1,7 +1,7 @@
 import base64js from 'base64-js'
 import shortid from 'shortid'
 import * as msgpack from '@msgpack/msgpack'
-import * as Regalia from '../regalia'
+import * as Regalia from './regalia'
 
 type Parameters = [
   string,
@@ -26,10 +26,10 @@ const regaliasFromParameters = (paramsArray: Parameters[]): Regalia.Regalia[] =>
     return {
       id: shortid.generate(),
       definition: Regalia.definitionsByName[name],
-      level: level,
-      rank: rank,
-      rarity: rarity,
-      upgrade: upgrade,
+      level,
+      rank,
+      rarity,
+      upgrade,
     }
   })
 

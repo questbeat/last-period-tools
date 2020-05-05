@@ -11,63 +11,47 @@ enum CalculatorActionType {
   SetRegalias = 'CALC_SET_REGALIAS',
 }
 
-export function addRegalia() {
-  return {
-    type: CalculatorActionType.AddRegalia as const,
-  }
-}
+export const addRegalia = () => ({
+  type: CalculatorActionType.AddRegalia as const,
+})
 
-export function removeRegalia(id: string) {
-  return {
-    type: CalculatorActionType.RemoveRegalia as const,
-    payload: { id },
-  }
-}
+export const removeRegalia = (id: string) => ({
+  type: CalculatorActionType.RemoveRegalia as const,
+  payload: { id },
+})
 
-export function setRegaliaDefinition(
+export const setRegaliaDefinition = (
   id: string,
   definition: Regalia.Definition
-) {
-  return {
-    type: CalculatorActionType.SetRegaliaDefinition as const,
-    payload: { id, definition },
-  }
-}
+) => ({
+  type: CalculatorActionType.SetRegaliaDefinition as const,
+  payload: { id, definition },
+})
 
-export function setRegaliaLevel(id: string, level: Regalia.Level) {
-  return {
-    type: CalculatorActionType.SetRegaliaLevel as const,
-    payload: { id, level },
-  }
-}
+export const setRegaliaLevel = (id: string, level: Regalia.Level) => ({
+  type: CalculatorActionType.SetRegaliaLevel as const,
+  payload: { id, level },
+})
 
-export function setRegaliaRank(id: string, rank: Regalia.Rank) {
-  return {
-    type: CalculatorActionType.SetRegaliaRank as const,
-    payload: { id, rank },
-  }
-}
+export const setRegaliaRank = (id: string, rank: Regalia.Rank) => ({
+  type: CalculatorActionType.SetRegaliaRank as const,
+  payload: { id, rank },
+})
 
-export function setRegaliaRarity(id: string, rarity: Regalia.Rarity) {
-  return {
-    type: CalculatorActionType.SetRegaliaRarity as const,
-    payload: { id, rarity },
-  }
-}
+export const setRegaliaRarity = (id: string, rarity: Regalia.Rarity) => ({
+  type: CalculatorActionType.SetRegaliaRarity as const,
+  payload: { id, rarity },
+})
 
-export function setRegaliaUpgrade(id: string, upgrade: Regalia.Upgrade) {
-  return {
-    type: CalculatorActionType.SetRegaliaUpgrade as const,
-    payload: { id, upgrade },
-  }
-}
+export const setRegaliaUpgrade = (id: string, upgrade: Regalia.Upgrade) => ({
+  type: CalculatorActionType.SetRegaliaUpgrade as const,
+  payload: { id, upgrade },
+})
 
-export function setRegalias(regalias: Regalia.Regalia[]) {
-  return {
-    type: CalculatorActionType.SetRegalias as const,
-    payload: { regalias },
-  }
-}
+export const setRegalias = (regalias: Regalia.Regalia[]) => ({
+  type: CalculatorActionType.SetRegalias as const,
+  payload: { regalias },
+})
 
 export type CalculatorAction =
   | ReturnType<typeof addRegalia>

@@ -62,18 +62,18 @@ export const definitionsByName: {
   [key: string]: Definition
 } = Object.fromEntries(definitions.map((d) => [d.name, d]))
 
-export function floor(num: number, digits: number): number {
+export const floor = (num: number, digits: number) => {
   const base = Math.pow(10, digits)
   return Math.floor(num * base) / base
 }
 
-export function computeValue(props: {
+export const computeValue = (props: {
   ability: Ability
   level: Level
   rank: Rank
   rarity: Rarity
   upgrade: Upgrade
-}): Value {
+}): Value => {
   const base = props.ability.baseValues[props.rarity - 1]
 
   // number型で計算すると誤差が生じるため、BigNumberで計算します
@@ -104,13 +104,13 @@ export function computeValue(props: {
   }
 }
 
-export function computeValues(props: {
+export const computeValues = (props: {
   definition: Definition
   level: Level
   rank: Rank
   rarity: Rarity
   upgrade: Upgrade
-}): Value[] {
+}): Value[] => {
   const { definition, ...statuses } = props
   return props.definition.abilities.map((ability) =>
     computeValue({
@@ -120,7 +120,7 @@ export function computeValues(props: {
   )
 }
 
-export function getDisplayValue(res: Value, onlyValue = false): string {
+export const getDisplayValue = (res: Value, onlyValue = false) => {
   let value = res.value
   if (res.ability.type === 'percentage') value *= 100
   value = floor(value, res.ability.digits)
@@ -133,13 +133,11 @@ export function getDisplayValue(res: Value, onlyValue = false): string {
   return desc
 }
 
-export function createRegalia(): Regalia {
-  return {
-    id: shortid.generate(),
-    definition: definitions[0],
-    level: 10,
-    rank: 'C',
-    rarity: 1,
-    upgrade: 1,
-  }
-}
+export const createRegalia = (): Regalia => ({
+  id: shortid.generate(),
+  definition: definitions[0],
+  level: 10,
+  rank: 'C',
+  rarity: 1,
+  upgrade: 1,
+})
