@@ -46,7 +46,7 @@ yarn build
 ### Generate regalia data
 
 ```sh
-make download definitions
+make sheet definitions
 ```
 
 
