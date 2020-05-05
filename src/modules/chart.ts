@@ -6,19 +6,15 @@ enum ChartActionType {
   SetRank = 'CHART_SET_RANK',
 }
 
-export function setDefinition(definition: Regalia.Definition) {
-  return {
-    type: ChartActionType.SetDefinition as const,
-    payload: { definition },
-  }
-}
+export const setDefinition = (definition: Regalia.Definition) => ({
+  type: ChartActionType.SetDefinition as const,
+  payload: { definition },
+})
 
-export function setRank(rank: Regalia.Rank) {
-  return {
-    type: ChartActionType.SetRank as const,
-    payload: { rank },
-  }
-}
+export const setRank = (rank: Regalia.Rank) => ({
+  type: ChartActionType.SetRank as const,
+  payload: { rank },
+})
 
 export type ChartAction =
   | ReturnType<typeof setDefinition>

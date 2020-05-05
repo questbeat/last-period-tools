@@ -20,7 +20,7 @@ https://last-period.netlify.app/
 git clone git@github.com:questbeat/last-period-tools.git
 cd last-period-tools
 
-yarn
+yarn install
 ```
 
 ### Run
@@ -46,10 +46,10 @@ yarn build
 ### Generate regalia data
 
 ```sh
-make download definitions
+make sheet definitions
 ```
 
 
 ## License
 
-[MIT License](https://github.com/questbeat/last-period-tools/blob/master/LICENSE)
+Last Period Tools is [MIT Licensed](LICENSE).

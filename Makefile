@@ -10,8 +10,8 @@ help:
 definitions: ## Generate regalia definitions
 	@$(TS_NODE) scripts/definitions.ts
 
-.PHONY: download
-download: ## Download spreadsheet
+.PHONY: sheet
+sheet: ## Download spreadsheet
 	@curl -L -o data/regalia.xlsx https://docs.google.com/spreadsheets/d/18hSvxSKns_Y3dlqBs-kzaiILYCy9cSU6IjJzUFucgIs/export?format=xlsx
 
 .PHONY: test

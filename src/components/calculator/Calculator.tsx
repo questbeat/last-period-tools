@@ -10,7 +10,7 @@ import { CalculatorTable } from './CalculatorTable'
 import { CalculatorToolbar } from './CalculatorToolbar'
 import { RouteComponentProps, withRouter } from 'react-router-dom'
 import queryString from 'query-string'
-import { decodeRegalias, encodeRegalias } from '../../utils/serialization'
+import { decodeRegalias, encodeRegalias } from '../../serialization'
 import copyToClipboard from 'clipboard-copy'
 import { Notification } from './Notification'
 
