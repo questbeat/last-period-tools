@@ -1,5 +1,8 @@
 # Last Period Tools
 
+![Build](https://github.com/questbeat/last-period-tools/workflows/Build/badge.svg)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6d93b567-8d91-4c7b-aad9-73e115f3137f/deploy-status)](https://app.netlify.com/sites/last-period/deploys)
+
 iOS/Android 向けゲーム「[ラストピリオド -終わりなき螺旋の物語-](http://lastperiod.happyelements.co.jp/)」向けのツール集です。
 
 https://last-period.netlify.app/
