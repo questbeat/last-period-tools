@@ -1,5 +1,7 @@
 # Last Period Tools
 
+![Build](https://github.com/questbeat/last-period-tools/workflows/Build/badge.svg)
+
 iOS/Android 向けゲーム「[ラストピリオド -終わりなき螺旋の物語-](http://lastperiod.happyelements.co.jp/)」向けのツール集です。
 
 https://last-period.netlify.app/
