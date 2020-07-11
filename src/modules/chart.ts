@@ -1,18 +1,18 @@
 import React from 'react'
 import * as Regalia from '../regalia'
 
-enum ChartActionType {
-  SetDefinition = 'CHART_SET_DEFINITION',
-  SetRank = 'CHART_SET_RANK',
-}
+const ChartActionType = {
+  SetDefinition: 'CHART_SET_DEFINITION',
+  SetRank: 'CHART_SET_RANK',
+} as const
 
 export const setDefinition = (definition: Regalia.Definition) => ({
-  type: ChartActionType.SetDefinition as const,
+  type: ChartActionType.SetDefinition,
   payload: { definition },
 })
 
 export const setRank = (rank: Regalia.Rank) => ({
-  type: ChartActionType.SetRank as const,
+  type: ChartActionType.SetRank,
   payload: { rank },
 })
 
