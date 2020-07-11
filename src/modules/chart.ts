@@ -16,9 +16,7 @@ export const setRank = (rank: Regalia.Rank) => ({
   payload: { rank },
 })
 
-export type ChartAction =
-  | ReturnType<typeof setDefinition>
-  | ReturnType<typeof setRank>
+export type ChartAction = ReturnType<typeof setDefinition | typeof setRank>
 
 export interface ChartState {
   definition: Regalia.Definition

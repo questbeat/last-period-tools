@@ -53,15 +53,16 @@ export const setRegalias = (regalias: Regalia.Regalia[]) => ({
   payload: { regalias },
 })
 
-export type CalculatorAction =
-  | ReturnType<typeof addRegalia>
-  | ReturnType<typeof removeRegalia>
-  | ReturnType<typeof setRegaliaDefinition>
-  | ReturnType<typeof setRegaliaLevel>
-  | ReturnType<typeof setRegaliaRank>
-  | ReturnType<typeof setRegaliaRarity>
-  | ReturnType<typeof setRegaliaUpgrade>
-  | ReturnType<typeof setRegalias>
+export type CalculatorAction = ReturnType<
+  | typeof addRegalia
+  | typeof removeRegalia
+  | typeof setRegaliaDefinition
+  | typeof setRegaliaLevel
+  | typeof setRegaliaRank
+  | typeof setRegaliaRarity
+  | typeof setRegaliaUpgrade
+  | typeof setRegalias
+>
 
 export interface CalculatorState {
   regalias: {
